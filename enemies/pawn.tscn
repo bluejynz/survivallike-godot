@@ -58,7 +58,7 @@ animations = [{
 radius = 20.0
 height = 46.0
 
-[node name="Pawn" type="CharacterBody2D"]
+[node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_y81ao")
 
@@ -73,5 +73,5 @@ frame_progress = 0.149335
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_at5xd")
 
-[node name="FollowPlayer" type="Node" parent="." groups=["enemies"]]
+[node name="FollowPlayer" type="Node" parent="."]
 script = ExtResource("1_x7y2v")
