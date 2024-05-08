@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://ditvc7kdt2d8i"]
+
+[ext_resource type="Texture2D" uid="uid://dcmu5ajncil7y" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_5mkyo"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="1_x7y2v"]
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_y81ao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pruve"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhjer"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5txtg"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki8ks"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tslv1"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2mf2"]
+atlas = ExtResource("1_5mkyo")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bjyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pruve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5txtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki8ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tslv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2mf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at5xd"]
+radius = 20.0
+height = 46.0
+
+[node name="Pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_y81ao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_0bjyo")
+autoplay = "default"
+frame = 5
+frame_progress = 0.149335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_at5xd")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("1_x7y2v")

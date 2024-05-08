@@ -12,6 +12,7 @@ var is_attacking: bool = false
 @export var speed: float = 3
 
 func _process(delta: float) -> void:
+	GameManager.player_position = position
 	read_input()
 	
 	update_attack_cooldown(delta)
