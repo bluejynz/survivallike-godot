@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc3abgevaik7x"]
+[gd_scene load_steps=15 format=3 uid="uid://cc3abgevaik7x"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_jook0"]
 [ext_resource type="Texture2D" uid="uid://chs26awqrak4l" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_vs62s"]
@@ -249,6 +249,9 @@ _data = {
 "run": SubResource("Animation_30kw2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rowl"]
+radius = 131.137
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jook0")
 
@@ -268,3 +271,10 @@ libraries = {
 "": SubResource("AnimationLibrary_v51ic")
 }
 autoplay = "idle"
+
+[node name="SwordArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_8rowl")
+debug_color = Color(0.318807, 0.617832, 0.287139, 0)
