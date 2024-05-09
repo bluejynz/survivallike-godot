@@ -1,0 +1,149 @@
+[gd_scene load_steps=22 format=3 uid="uid://b0585uwog8yts"]
+
+[ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_m042j"]
+[ext_resource type="Texture2D" uid="uid://7wikkhu31ck2" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Bouncing.png" id="3_mnt3k"]
+[ext_resource type="Texture2D" uid="uid://66vk0ev7sgfh" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Idle.png" id="4_u1ttg"]
+[ext_resource type="Script" path="res://entities/animals/behaviors/run_from_player.gd" id="5_kfe0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km1um"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjwhb"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh3xs"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2koc"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vurki"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s50rg"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gft7u"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h122"]
+atlas = ExtResource("4_u1ttg")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibx6k"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wr53"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjxp7"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x7yc"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emtf3"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5vne"]
+atlas = ExtResource("3_mnt3k")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bjyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km1um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjwhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh3xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2koc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vurki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s50rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gft7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h122")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibx6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wr53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjxp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x7yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emtf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5vne")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at5xd"]
+radius = 19.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhtxv"]
+radius = 89.4986
+
+[node name="Sheep" type="CharacterBody2D" groups=["animals", "enemies"]]
+motion_mode = 1
+script = ExtResource("1_m042j")
+health = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_0bjyo")
+animation = &"run"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_at5xd")
+
+[node name="RunFromPlayer" type="Node" parent="."]
+script = ExtResource("5_kfe0h")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_qhtxv")
+debug_color = Color(0.485342, 0.580921, 0.269931, 0)
