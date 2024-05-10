@@ -7,6 +7,7 @@ extends Node2D
 
 func damage(amount: int) -> void:
 	health -= amount
+	print("Inimigo tomou dano, vida: ", health)
 	
 	modulate = Color.INDIAN_RED
 	var tween = create_tween()

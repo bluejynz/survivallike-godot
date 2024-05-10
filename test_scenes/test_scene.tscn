@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dypu3gc04p13r"]
+[gd_scene load_steps=7 format=3 uid="uid://dypu3gc04p13r"]
 
 [ext_resource type="PackedScene" uid="uid://cc3abgevaik7x" path="res://player/player.tscn" id="1_7v838"]
 [ext_resource type="PackedScene" uid="uid://ditvc7kdt2d8i" path="res://entities/enemies/pawn.tscn" id="2_gmh2n"]
 [ext_resource type="PackedScene" uid="uid://b0585uwog8yts" path="res://entities/animals/sheep.tscn" id="3_br5bx"]
 [ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="4_o7pvk"]
 [ext_resource type="PackedScene" uid="uid://r76d6e7xbhdu" path="res://entities/enemies/goblin.tscn" id="5_fb8gp"]
+[ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="6_e3utb"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,3 +23,6 @@ death_prefab = ExtResource("4_o7pvk")
 
 [node name="Goblin" parent="." instance=ExtResource("5_fb8gp")]
 position = Vector2(987, 366)
+
+[node name="Meat" parent="." instance=ExtResource("6_e3utb")]
+position = Vector2(271, 138)
