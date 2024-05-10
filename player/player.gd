@@ -1,17 +1,21 @@
 extends CharacterBody2D
 
-@onready var sword_area: Area2D = $SwordArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var sword_area: Area2D = $SwordArea
+@onready var hitbox_area: Area2D = $HitboxArea
 
 var input_vector: Vector2 = Vector2(0, 0)
 var attack_cooldown: float = 0
+var hitbox_cooldown: float = 0
 var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
 
+@export var death_prefab: PackedScene
 @export var speed: float = 3
 @export var sword_damage: int = 2
+@export var health: int = 100
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -24,6 +28,8 @@ func _process(delta: float) -> void:
 	play_run_idle_animation()
 	if not is_attacking:
 		rotate_sprite()
+	
+	update_hitbox_detection(delta)
 
 
 func _physics_process(delta: float) -> void:
@@ -91,3 +97,36 @@ func update_attack_cooldown(delta: float) -> void:
 			is_attacking = false
 			is_running = false
 			animation_player.play("idle")
+
+func update_hitbox_detection(delta: float) -> void:
+	hitbox_cooldown -= delta
+	if(hitbox_cooldown > 0): return
+	
+	hitbox_cooldown = .5
+	
+	var bodies = hitbox_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			damage(enemy.hit_damage)
+
+func damage(amount: int) -> void:
+	if(health <= 0): return
+	health -= amount
+	
+	modulate = Color.INDIAN_RED
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "modulate", Color.WHITE, .2)
+	
+	if health <= 0:
+		die()
+
+func die() -> void:
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		death_object.position = position
+		get_parent().add_child(death_object)
+	
+	queue_free()

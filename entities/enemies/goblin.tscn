@@ -70,7 +70,7 @@ death_prefab = ExtResource("2_weokb")
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_0bjyo")
 autoplay = "default"
-frame_progress = 0.228324
+frame_progress = 0.590785
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
