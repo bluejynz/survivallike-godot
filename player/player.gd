@@ -6,18 +6,26 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 
+@export_category("Movement")
+@export var speed: float = 3
+@export_category("Sword")
+@export var sword_damage: int = 2
+@export_category("Ritual")
+@export var ritual_damage: int = 1
+@export var ritual_interval: float = 30
+@export var ritual_prefab: PackedScene
+@export_category("Life")
+@export var death_prefab: PackedScene
+@export var max_health: int = 100
+@export var health: int = 100
+
 var input_vector: Vector2 = Vector2(0, 0)
 var attack_cooldown: float = 0
 var hitbox_cooldown: float = 0
+var ritual_cooldown: float = 0
 var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
-
-@export var death_prefab: PackedScene
-@export var speed: float = 3
-@export var sword_damage: int = 2
-@export var max_health: int = 100
-@export var health: int = 100
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -32,6 +40,7 @@ func _process(delta: float) -> void:
 		rotate_sprite()
 	
 	update_hitbox_detection(delta)
+	update_ritual(delta)
 
 
 func _physics_process(delta: float) -> void:
@@ -40,7 +49,6 @@ func _physics_process(delta: float) -> void:
 		target_velocity *= .25
 	velocity = lerp(velocity, target_velocity, .05)
 	move_and_slide()
-		
 
 func read_input() -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -140,3 +148,12 @@ func heal(amount: int) -> int:
 		health = max_health
 	print("Player curou, vida: ", health, "|", max_health)
 	return health
+
+func update_ritual(delta: float) -> void:
+	ritual_cooldown -= delta
+	if ritual_cooldown > 0: return
+	ritual_cooldown = ritual_interval
+	
+	var ritual = ritual_prefab.instantiate()
+	ritual.damage_amount = ritual_damage
+	add_child(ritual)

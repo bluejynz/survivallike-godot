@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wqcq88uemdpm"]
+
+[ext_resource type="Texture2D" uid="uid://churmh50ehhtd" path="res://addons/HealthBar/healthbar_bg.png" id="1_ve4d8"]
+[ext_resource type="Texture2D" uid="uid://hxdtmipet5ga" path="res://addons/HealthBar/healthbar.png" id="2_dislj"]
+
+[node name="HealtBar" type="Node2D"]
+scale = Vector2(0.467481, 0.467481)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_ve4d8")
+
+[node name="FrameSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_dislj")

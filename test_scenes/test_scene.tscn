@@ -3,16 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://cc3abgevaik7x" path="res://player/player.tscn" id="1_7v838"]
 [ext_resource type="PackedScene" uid="uid://ditvc7kdt2d8i" path="res://entities/enemies/pawn.tscn" id="2_gmh2n"]
 [ext_resource type="PackedScene" uid="uid://b0585uwog8yts" path="res://entities/animals/sheep.tscn" id="3_br5bx"]
-[ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="4_o7pvk"]
 [ext_resource type="PackedScene" uid="uid://r76d6e7xbhdu" path="res://entities/enemies/goblin.tscn" id="5_fb8gp"]
 [ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="6_e3utb"]
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="7_8sya4"]
+[ext_resource type="PackedScene" uid="uid://dr3qj1p6e3mhm" path="res://misc/ritual.tscn" id="8_32kmn"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7v838")]
 position = Vector2(540, 360)
 scale = Vector2(1, 0.973)
+ritual_damage = 2
+ritual_interval = 15.0
+ritual_prefab = ExtResource("8_32kmn")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -23,7 +26,6 @@ health = 6
 [node name="Sheep" parent="." instance=ExtResource("3_br5bx")]
 position = Vector2(557, 503)
 health = 4
-death_prefab = ExtResource("4_o7pvk")
 
 [node name="Goblin" parent="." instance=ExtResource("5_fb8gp")]
 position = Vector2(987, 366)
