@@ -1,6 +1,7 @@
 extends Node
 
 @export var speed: float = 1
+@export var stop_interval: float = 2
 
 var enemy: Enemy
 var sprite: AnimatedSprite2D
@@ -16,7 +17,9 @@ func _ready():
 	set_deferred("monitoring", true)
 
 func _process(delta: float) -> void:
-	detect_player()
+	detection_area.body_entered.connect(detect_player)
+	detection_area.body_exited.connect(stop_running)
+	
 	play_run_idle_animation()
 	update_stop_running_cooldown(delta)
 
@@ -34,25 +37,21 @@ func _physics_process(delta: float) -> void:
 		
 		enemy.move_and_slide()
 
-func detect_player() -> void:
-	var areas = detection_area.get_overlapping_areas()
-	for area in areas:
-		if area.is_in_group("player"):
-				is_running = true;
-	if areas.is_empty():
-		stop_running()
-		
-
 func play_run_idle_animation() -> void:
 	if is_running:
 		sprite.play("run")
 	else:
 		sprite.play("idle")
 
-func stop_running() -> void:
+func detect_player(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		is_running = true
+		is_stopping = false
+
+func stop_running(body: Node2D) -> void:
 	if not is_stopping and is_running:
 		is_stopping = true
-		stop_running_cooldown = 2
+		stop_running_cooldown = stop_interval
 
 func update_stop_running_cooldown(delta: float) -> void:
 	if is_stopping:
