@@ -1,14 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://wqcq88uemdpm"]
+[gd_scene load_steps=5 format=3 uid="uid://wqcq88uemdpm"]
 
 [ext_resource type="Texture2D" uid="uid://churmh50ehhtd" path="res://addons/HealthBar/healthbar_bg.png" id="1_ve4d8"]
 [ext_resource type="Texture2D" uid="uid://hxdtmipet5ga" path="res://addons/HealthBar/healthbar.png" id="2_dislj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5u7ey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stbay"]
+bg_color = Color(0.694118, 0, 0.12549, 1)
 
 [node name="HealtBar" type="Node2D"]
 scale = Vector2(0.467481, 0.467481)
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
+modulate = Color(0.351563, 0.351563, 0.351563, 1)
 position = Vector2(0, -32)
 texture = ExtResource("1_ve4d8")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -83.0
+offset_top = -53.0
+offset_right = 83.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_5u7ey")
+theme_override_styles/fill = SubResource("StyleBoxFlat_stbay")
+value = 61.83
+show_percentage = false
 
 [node name="FrameSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -32)

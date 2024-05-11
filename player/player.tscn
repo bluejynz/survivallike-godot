@@ -296,3 +296,4 @@ debug_color = Color(0.898039, 0.294118, 0.301961, 0)
 
 [node name="HealtBar" parent="." instance=ExtResource("4_3ft26")]
 position = Vector2(0, -87.3611)
+scale = Vector2(0.296731, 0.296731)
