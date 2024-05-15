@@ -7,6 +7,7 @@
 [sub_resource type="SystemFont" id="SystemFont_8e83s"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ush4"]
 font = SubResource("SystemFont_8e83s")
@@ -27,6 +28,7 @@ region_rect = Rect2(32, 48, 128, 128)
 [sub_resource type="SystemFont" id="SystemFont_x0ign"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_pl84y"]
 font = SubResource("SystemFont_x0ign")
@@ -37,7 +39,7 @@ font_color = Color(0, 0, 0, 1)
 atlas = ExtResource("3_ku5sf")
 region = Rect2(40, 48, 56, 56)
 
-[node name="GameUi" type="CanvasLayer"]
+[node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_i6dvi")
 
 [node name="TimerLabel" type="Label" parent="."]

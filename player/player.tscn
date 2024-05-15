@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="2_updn1"]
 [ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://misc/healt_bar.tscn" id="4_3ft26"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kswxr"]
-radius = 17.0
-height = 58.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovppi"]
+radius = 15.0352
 
 [sub_resource type="Animation" id="Animation_7ql6b"]
 length = 0.001
@@ -269,8 +268,8 @@ hframes = 6
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -30)
-shape = SubResource("CapsuleShape2D_kswxr")
+position = Vector2(0, -13.3611)
+shape = SubResource("CircleShape2D_ovppi")
 debug_color = Color(0, 0.6, 0.701961, 0.317647)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
