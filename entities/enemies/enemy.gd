@@ -9,7 +9,7 @@ var damage_digit_prefab: PackedScene
 @onready var damage_digit_marker = $DamageDigitMarker
 
 func _ready():
-	damage_digit_prefab = preload("res://misc/damage_digit.tscn")
+	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
 	
 
 func damage(amount: int) -> void:

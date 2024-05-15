@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://so8yoxxwvxfy"]
 
-[ext_resource type="Script" path="res://misc/damage_digit.gd" id="1_4sbjr"]
+[ext_resource type="Script" path="res://ui/damage_digit.gd" id="1_4sbjr"]
 
 [sub_resource type="SystemFont" id="SystemFont_fdu32"]
 font_names = PackedStringArray("Consolas")

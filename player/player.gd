@@ -127,7 +127,6 @@ func update_hitbox_detection(delta: float) -> void:
 func damage(amount: int) -> void:
 	if(health <= 0): return
 	health -= amount
-	print("Player tomou dano, vida: ", health, "|", max_health)
 	
 	modulate = Color.INDIAN_RED
 	var tween = create_tween()
@@ -150,7 +149,6 @@ func heal(amount: int) -> int:
 	health += amount
 	if health > max_health:
 		health = max_health
-	print("Player curou, vida: ", health, "|", max_health)
 	return health
 
 func update_ritual(delta: float) -> void:

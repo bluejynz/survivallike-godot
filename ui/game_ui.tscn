@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://fgb00tra0pdh"]
+
+[ext_resource type="Script" path="res://ui/game_ui.gd" id="1_i6dvi"]
+
+[sub_resource type="SystemFont" id="SystemFont_8e83s"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ush4"]
+font = SubResource("SystemFont_8e83s")
+font_size = 24
+
+[node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_i6dvi")
+
+[node name="TimerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "02:35"
+label_settings = SubResource("LabelSettings_2ush4")
+horizontal_alignment = 1
+vertical_alignment = 1
