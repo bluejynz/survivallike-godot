@@ -3,14 +3,17 @@ extends Node2D
 
 @export var health: int = 10
 @export var hit_damage: int = 1
-@export var death_prefab: PackedScene
 
 var damage_digit_prefab: PackedScene
+var meat_prefab: PackedScene
+var death_prefab: PackedScene
+
 @onready var damage_digit_marker = $DamageDigitMarker
 
 func _ready():
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
-	
+	meat_prefab = preload("res://misc/meat.tscn")
+	death_prefab = preload("res://misc/skull.tscn")
 
 func damage(amount: int) -> void:
 	health -= amount
@@ -34,9 +37,13 @@ func damage(amount: int) -> void:
 		die()
 
 func die() -> void:
-	if death_prefab:
+	if not self.is_in_group("animals"):
+		GameManager.gold_collected.emit()
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
 		get_parent().add_child(death_object)
-	
+	else:
+		var meat_object = meat_prefab.instantiate()
+		meat_object.position = position
+		get_parent().add_child(meat_object)
 	queue_free()

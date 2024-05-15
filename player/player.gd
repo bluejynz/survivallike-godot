@@ -28,6 +28,9 @@ var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
 
+func _ready():
+	GameManager.player = self
+
 func _process(delta: float) -> void:
 	GameManager.player_position = position
 	read_input()
