@@ -149,3 +149,6 @@ script = ExtResource("5_kfe0h")
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_qhtxv")
 debug_color = Color(0.485342, 0.580921, 0.269931, 0)
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -29)
