@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var sword_damage: int = 2
 @export_category("Ritual")
 @export var ritual_damage: int = 1
-@export var ritual_interval: float = 30
+@export var ritual_interval: float = 15
 @export var ritual_prefab: PackedScene
 @export_category("Life")
 @export var death_prefab: PackedScene

@@ -1,8 +1,13 @@
 class_name Enemy
 extends Node2D
 
+@export_category("Life")
 @export var health: int = 10
 @export var hit_damage: int = 1
+
+@export_category("Drops")
+#@export var drop_chance: float = .1
+@export var drop_items_and_chance: Dictionary #[PackedScene, float]
 
 var damage_digit_prefab: PackedScene
 var meat_prefab: PackedScene
@@ -17,7 +22,6 @@ func _ready():
 
 func damage(amount: int) -> void:
 	health -= amount
-	print("Inimigo tomou dano, vida: ", health)
 	
 	modulate = Color.INDIAN_RED
 	var tween = create_tween()
@@ -37,13 +41,21 @@ func damage(amount: int) -> void:
 		die()
 
 func die() -> void:
-	if not self.is_in_group("animals"):
-		GameManager.gold_collected.emit()
+	if death_prefab:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
 		get_parent().add_child(death_object)
-	else:
-		var meat_object = meat_prefab.instantiate()
-		meat_object.position = position
-		get_parent().add_child(meat_object)
+	
+	drop_items()
+	
 	queue_free()
+
+func drop_items() -> void:
+	for item in drop_items_and_chance:
+		if randf() <= drop_items_and_chance[item]:
+			var item_object = item.instantiate()
+			item_object.position = position
+			get_parent().add_child(item_object)
+	#var meat_object = meat_prefab.instantiate()
+	#meat_object.position = position
+	#get_parent().add_child(meat_object)

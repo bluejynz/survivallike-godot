@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0585uwog8yts"]
+[gd_scene load_steps=23 format=3 uid="uid://b0585uwog8yts"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_m042j"]
+[ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="2_wt07q"]
 [ext_resource type="Texture2D" uid="uid://7wikkhu31ck2" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Bouncing.png" id="3_mnt3k"]
 [ext_resource type="Texture2D" uid="uid://66vk0ev7sgfh" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Idle.png" id="4_u1ttg"]
 [ext_resource type="Script" path="res://entities/animals/behaviors/run_from_player.gd" id="5_kfe0h"]
@@ -127,6 +128,9 @@ radius = 89.4986
 motion_mode = 1
 script = ExtResource("1_m042j")
 health = 6
+drop_items_and_chance = {
+ExtResource("2_wt07q"): 0.75
+}
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
