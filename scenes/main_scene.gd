@@ -12,6 +12,4 @@ func trigger_game_over():
 		game_ui = null
 	
 	var game_over_ui: GameOverUI = game_over_ui_template.instantiate()
-	game_over_ui.time_survived = "12:54"
-	game_over_ui.monsters_slayed = 9
 	add_child(game_over_ui)
