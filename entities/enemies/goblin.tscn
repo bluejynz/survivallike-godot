@@ -65,6 +65,7 @@ scale = Vector2(1.76, 1.76)
 motion_mode = 1
 script = ExtResource("1_52jcw")
 health = 24
+hit_damage = 2
 drop_items_and_chance = {
 ExtResource("2_jbtvi"): 0.8,
 ExtResource("3_iuapw"): 0.1
