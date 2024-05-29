@@ -1,4 +1,4 @@
-# Survival like game
+# Survivors like game
 
 Final project for DIO + Santander's Bootcamp
 
@@ -6,7 +6,7 @@ Final project for DIO + Santander's Bootcamp
 
 ## How the game looks like right now
 
-![Printscreen from the game](/assets/game_printscreen.jpg "Printscreen from the game")
+![Printscreen from the game](/assets/game_printscreen.png "Printscreen from the game")
 
 ## What I have so far
 
