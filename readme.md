@@ -8,6 +8,8 @@ Final project for DIO + Santander's Bootcamp
 
 ![Printscreen from the game](/assets/game_printscreen.png "Printscreen from the game")
 
+![Static Badge](https://img.shields.io/badge/Jogar-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=fff&link=https%3A%2F%2Fbluejynz.itch.io%2Fsurvivors-like)
+
 ## What I have so far
 
 - Character movement and 1 simple attack
