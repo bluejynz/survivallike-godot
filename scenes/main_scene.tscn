@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://diwxy7d6gcnd7"]
+[gd_scene load_steps=18 format=3 uid="uid://diwxy7d6gcnd7"]
 
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="1_5i5c7"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gwd85"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bxamb5rnxfytg" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="4_xkvfw"]
 [ext_resource type="PackedScene" uid="uid://daw5o3vind3k" path="res://misc/tree.tscn" id="5_dx70e"]
 [ext_resource type="PackedScene" uid="uid://dr3qj1p6e3mhm" path="res://misc/ritual.tscn" id="6_pjjix"]
+[ext_resource type="Script" path="res://systems/difficulty_system.gd" id="10_7rtxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -138,6 +139,10 @@ scale = Vector2(1, 0.972973)
 [node name="ModSpawner" parent="." instance=ExtResource("1_5i5c7")]
 position = Vector2(521, 376)
 scale = Vector2(1, 0.972973)
+
+[node name="DifficultySystem" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner")]
+script = ExtResource("10_7rtxp")
+mob_spawner = NodePath("../ModSpawner")
 
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true
