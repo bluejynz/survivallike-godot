@@ -8,7 +8,11 @@ Final project for DIO + Santander's Bootcamp
 
 ![Printscreen from the game](/assets/game_printscreen.png "Printscreen from the game")
 
-![Static Badge](https://img.shields.io/badge/Jogar-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=fff&link=https%3A%2F%2Fbluejynz.itch.io%2Fsurvivors-like)
+<div>
+	<a href="https://bluejynz.itch.io/survivors-like">
+		<img src="https://img.shields.io/badge/Jogar-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=fff" />
+	</a>
+</div>
 
 ## What I have so far
 
