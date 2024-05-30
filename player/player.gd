@@ -49,7 +49,6 @@ func _process(delta: float) -> void:
 	health_bar.max_value = max_health
 	health_bar.value = health
 
-
 func _physics_process(delta: float) -> void:
 	var target_velocity = input_vector * speed * 100
 	if is_attacking:
@@ -123,6 +122,7 @@ func update_hitbox_detection(delta: float) -> void:
 	
 	var bodies = hitbox_area.get_overlapping_bodies()
 	for body in bodies:
+		if body.is_in_group("animals"): return
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
 			damage(enemy.hit_damage)

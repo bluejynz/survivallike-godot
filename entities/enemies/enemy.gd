@@ -58,6 +58,3 @@ func drop_items() -> void:
 			var item_object = item.instantiate()
 			item_object.position = position
 			get_parent().add_child(item_object)
-	#var meat_object = meat_prefab.instantiate()
-	#meat_object.position = position
-	#get_parent().add_child(meat_object)
