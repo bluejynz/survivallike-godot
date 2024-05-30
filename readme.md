@@ -34,8 +34,7 @@ Final project for DIO + Santander's Bootcamp
 	- Add button to restart immediately
 	- Add button to go to main menu
 - Add a main menu
-- Add fullscreen mode
-- Display enemies life
+- Add fullscreen mode for desktop
 
 ### Gameplay
 - Create leveling/upgrade system
