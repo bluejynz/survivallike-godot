@@ -17,7 +17,7 @@ var monsters_slayed: int = 0
 var is_game_over: bool = false
 
 func _ready():
-	is_os_mobile = OS.has_feature("mobile")
+	is_os_mobile = OS.get_model_name() != "GenericDevice"
 	config_mobile()
 
 func _process(delta):
