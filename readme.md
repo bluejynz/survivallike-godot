@@ -30,8 +30,6 @@ Final project for DIO + Santander's Bootcamp
 ### UI
 
 - On Game Over screen:
-	- Show restart cooldown
-	- Add button to restart immediately
 	- Add button to go to main menu
 - Add a main menu
 - Add fullscreen mode for desktop

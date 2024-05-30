@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 	if restart_cooldown <= 0:
 		restart_game()
 
+func _input(event):
+	if event is InputEventMouseButton:
+		restart_cooldown = 0
+
 func restart_game():
 	GameManager.reset()
 	get_tree().reload_current_scene()
