@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var time_label: Label = %TimeLabel
 @onready var monsters_label: Label = %MonstersLabel
+@onready var countdown_label: Label = %RestartCountdownLabel
 
 @export var restart_delay: float = 10
 
@@ -14,6 +15,7 @@ func _ready():
 	restart_cooldown = restart_delay
 
 func _process(delta: float) -> void:
+	updateCountdownLabel()
 	restart_cooldown -= delta
 	if restart_cooldown <= 0:
 		restart_game()
@@ -21,3 +23,7 @@ func _process(delta: float) -> void:
 func restart_game():
 	GameManager.reset()
 	get_tree().reload_current_scene()
+
+func updateCountdownLabel():
+	var countdown: int = ceili(restart_cooldown) % 60
+	countdown_label.text = "Restarting in %d seconds..." % countdown

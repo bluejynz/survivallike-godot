@@ -16,7 +16,6 @@
 position = Vector2(540, 360)
 scale = Vector2(1, 0.973)
 ritual_damage = 2
-ritual_interval = 15.0
 ritual_prefab = ExtResource("8_32kmn")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

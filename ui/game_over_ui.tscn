@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bybqrou3pp4ep"]
+[gd_scene load_steps=15 format=3 uid="uid://bybqrou3pp4ep"]
 
 [ext_resource type="Texture2D" uid="uid://s3dcl1f7guhg" path="res://addons/Tiny Swords (Update 010)/UI/Ribbons/Ribbon_Red_3Slides.png" id="1_nwg0w"]
 [ext_resource type="Script" path="res://ui/game_over_ui.gd" id="1_pl3fv"]
@@ -126,6 +126,14 @@ _data = {
 "default": SubResource("Animation_mwdp0")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_kujg7"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_upmkd"]
+font = SubResource("SystemFont_kujg7")
+font_size = 32
+
 [node name="GameOverUI" type="CanvasLayer"]
 script = ExtResource("1_pl3fv")
 
@@ -229,3 +237,19 @@ libraries = {
 "": SubResource("AnimationLibrary_v1eni")
 }
 autoplay = "default"
+
+[node name="RestartCountdownLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -90.0
+offset_right = 126.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restarting in 5 seconds..."
+label_settings = SubResource("LabelSettings_upmkd")
