@@ -41,3 +41,4 @@ Final project for DIO + Santander's Bootcamp
 - Create leveling/upgrade system
 - Add more spells
 - Add more enemies
+- Add mobile controls

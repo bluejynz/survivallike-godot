@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://diwxy7d6gcnd7"]
+[gd_scene load_steps=21 format=3 uid="uid://diwxy7d6gcnd7"]
 
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="1_5i5c7"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gwd85"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://daw5o3vind3k" path="res://misc/tree.tscn" id="5_dx70e"]
 [ext_resource type="PackedScene" uid="uid://dr3qj1p6e3mhm" path="res://misc/ritual.tscn" id="6_pjjix"]
 [ext_resource type="Script" path="res://systems/difficulty_system.gd" id="10_7rtxp"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_h2s8d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -252,3 +253,10 @@ position = Vector2(1328, 1671)
 position = Vector2(751, 1374)
 
 [node name="GameUI" parent="." instance=ExtResource("3_ydcnf")]
+
+[node name="VirtualJoystick" parent="GameUI" instance=ExtResource("13_h2s8d")]
+unique_name_in_owner = true
+offset_left = -18.0
+offset_top = -284.0
+offset_right = 282.0
+offset_bottom = 16.0

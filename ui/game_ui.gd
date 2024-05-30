@@ -1,3 +1,4 @@
+class_name GameUI
 extends CanvasLayer
 
 @onready var timer_label: Label = %TimerLabel

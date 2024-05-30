@@ -3,6 +3,9 @@ extends Node
 signal gold_collected
 signal game_over
 
+var is_os_mobile: bool
+@onready var joystick: VirtualJoystick = get_node("/root/MainScene/GameUI/VirtualJoystick")
+
 var player: Player
 var player_position: Vector2
 
@@ -12,6 +15,10 @@ var elapsed_time_text: String
 var monsters_slayed: int = 0
 
 var is_game_over: bool = false
+
+func _ready():
+	is_os_mobile = OS.has_feature("mobile")
+	config_mobile()
 
 func _process(delta):
 	elapsed_time += delta
@@ -35,3 +42,10 @@ func reset():
 	is_game_over = false
 	for connection in game_over.get_connections():
 		game_over.disconnect(connection.callable)
+
+func config_mobile():
+	if is_os_mobile:
+		ProjectSettings.set_setting("input_devices/pointing/emulate_mouse_from_touch", true)
+	else:
+		ProjectSettings.set_setting("input_devices/pointing/emulate_mouse_from_touch", false)
+		joystick.queue_free()
