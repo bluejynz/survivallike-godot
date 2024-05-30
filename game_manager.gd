@@ -2,6 +2,8 @@ extends Node
 
 signal gold_collected
 signal game_over
+signal mob_killed
+signal level_up
 
 var is_os_mobile: bool
 @onready var joystick: VirtualJoystick = get_node("/root/MainScene/GameUI/VirtualJoystick")

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_y81ao"]
 [ext_resource type="PackedScene" uid="uid://dsxjm4dfdh7uf" path="res://misc/money.tscn" id="2_vo7hr"]
 [ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="3_kcjkp"]
-[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://misc/healt_bar.tscn" id="6_514to"]
+[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="6_c8ddu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pruve"]
 atlas = ExtResource("1_5mkyo")
@@ -67,6 +67,7 @@ drop_items_and_chance = {
 ExtResource("2_vo7hr"): 0.7,
 ExtResource("3_kcjkp"): 0.15
 }
+xp_given = 12
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -26)
@@ -85,5 +86,5 @@ script = ExtResource("1_x7y2v")
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -42)
 
-[node name="HealtBar" parent="." instance=ExtResource("6_514to")]
+[node name="HealtBar" parent="." instance=ExtResource("6_c8ddu")]
 scale = Vector2(-0.236312, -0.208222)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bafyuxh1t66wp" path="res://misc/golden_meat.tscn" id="3_iuapw"]
 [ext_resource type="Texture2D" uid="uid://2q0y6tyeoy03" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_wkdnc"]
 [ext_resource type="Script" path="res://entities/enemies/behaviors/follow_player.gd" id="4_x7djq"]
-[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://misc/healt_bar.tscn" id="6_2eqmw"]
+[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="6_prxf0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edcxj"]
 atlas = ExtResource("3_wkdnc")
@@ -71,6 +71,7 @@ drop_items_and_chance = {
 ExtResource("2_jbtvi"): 0.8,
 ExtResource("3_iuapw"): 0.1
 }
+xp_given = 26
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
@@ -90,5 +91,5 @@ speed = 0.4
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -63.6364)
 
-[node name="HealtBar" parent="." instance=ExtResource("6_2eqmw")]
+[node name="HealtBar" parent="." instance=ExtResource("6_prxf0")]
 scale = Vector2(-0.236312, -0.208222)

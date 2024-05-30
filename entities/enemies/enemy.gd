@@ -8,6 +8,7 @@ extends Node2D
 @export_category("Drops")
 #@export var drop_chance: float = .1
 @export var drop_items_and_chance: Dictionary #[PackedScene, float]
+@export var xp_given: int = 50
 
 var damage_digit_prefab: PackedScene
 var meat_prefab: PackedScene
@@ -54,6 +55,7 @@ func die() -> void:
 		get_parent().add_child(death_object)
 	
 	drop_items()
+	GameManager.mob_killed.emit(xp_given)
 	
 	queue_free()
 

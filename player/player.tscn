@@ -1,9 +1,46 @@
-[gd_scene load_steps=18 format=3 uid="uid://cc3abgevaik7x"]
+[gd_scene load_steps=21 format=3 uid="uid://cc3abgevaik7x"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_jook0"]
 [ext_resource type="Texture2D" uid="uid://chs26awqrak4l" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_vs62s"]
 [ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="2_updn1"]
-[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://misc/healt_bar.tscn" id="4_3ft26"]
+[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="4_32as7"]
+
+[sub_resource type="Animation" id="Animation_hcx2p"]
+resource_name = "default"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 0.3),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2, 2, 1.5, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4dggg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1cf6r"]
+_data = {
+"RESET": SubResource("Animation_4dggg"),
+"default": SubResource("Animation_hcx2p")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovppi"]
 radius = 15.0352
@@ -261,6 +298,11 @@ scale = Vector2(1, 0.972973)
 script = ExtResource("1_jook0")
 death_prefab = ExtResource("2_updn1")
 
+[node name="LevelUp" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1cf6r")
+}
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -34)
 texture = ExtResource("1_vs62s")
@@ -293,6 +335,9 @@ scale = Vector2(0.532143, 0.532143)
 shape = SubResource("CircleShape2D_somlw")
 debug_color = Color(0.898039, 0.294118, 0.301961, 0)
 
-[node name="HealtBar" parent="." instance=ExtResource("4_3ft26")]
+[node name="HealtBar" parent="." instance=ExtResource("4_32as7")]
 position = Vector2(0, -87.3611)
 scale = Vector2(0.296731, 0.296731)
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -104.833)

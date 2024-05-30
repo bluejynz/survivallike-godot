@@ -6,19 +6,25 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var health_bar: ProgressBar = $HealtBar/ProgressBar
+@onready var damage_digit_marker = $DamageDigitMarker
 
 @export_category("Movement")
 @export var speed: float = 3
+
 @export_category("Sword")
 @export var sword_damage: int = 2
+
 @export_category("Ritual")
 @export var ritual_damage: int = 1
 @export var ritual_interval: float = 15
 @export var ritual_prefab: PackedScene
+
 @export_category("Life")
 @export var death_prefab: PackedScene
 @export var max_health: int = 100
 @export var health: int = 100
+
+var level: int = 0
 
 var input_vector: Vector2 = Vector2(0, 0)
 var attack_cooldown: float = 0
@@ -28,8 +34,14 @@ var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
 
+var damage_digit_prefab: PackedScene
+var level_up_display_prefab: PackedScene
+
 func _ready():
+	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
+	level_up_display_prefab = preload("res://ui/level_up_display.tscn")
 	GameManager.player = self
+	GameManager.level_up.connect(level_up)
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -164,3 +176,17 @@ func update_ritual(delta: float) -> void:
 	var ritual = ritual_prefab.instantiate()
 	ritual.damage_amount = ritual_damage
 	add_child(ritual)
+
+func level_up():
+	modulate = Color(2, 2, 1.5)
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "modulate", Color.WHITE, 1)
+	
+	var level_up_display = level_up_display_prefab.instantiate()
+	if damage_digit_marker:
+		level_up_display.global_position = damage_digit_marker.global_position
+	else:
+		level_up_display.global_position = global_position
+	get_parent().add_child(level_up_display)
