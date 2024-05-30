@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://r76d6e7xbhdu"]
+[gd_scene load_steps=15 format=3 uid="uid://r76d6e7xbhdu"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_52jcw"]
 [ext_resource type="PackedScene" uid="uid://dsxjm4dfdh7uf" path="res://misc/money.tscn" id="2_jbtvi"]
 [ext_resource type="PackedScene" uid="uid://bafyuxh1t66wp" path="res://misc/golden_meat.tscn" id="3_iuapw"]
 [ext_resource type="Texture2D" uid="uid://2q0y6tyeoy03" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_wkdnc"]
 [ext_resource type="Script" path="res://entities/enemies/behaviors/follow_player.gd" id="4_x7djq"]
+[ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://misc/healt_bar.tscn" id="6_2eqmw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edcxj"]
 atlas = ExtResource("3_wkdnc")
@@ -88,3 +89,6 @@ speed = 0.4
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -63.6364)
+
+[node name="HealtBar" parent="." instance=ExtResource("6_2eqmw")]
+scale = Vector2(-0.236312, -0.208222)

@@ -48,4 +48,4 @@ func config_mobile():
 		ProjectSettings.set_setting("input_devices/pointing/emulate_mouse_from_touch", true)
 	else:
 		ProjectSettings.set_setting("input_devices/pointing/emulate_mouse_from_touch", false)
-		joystick.queue_free()
+		#joystick.queue_free()

@@ -14,11 +14,16 @@ var meat_prefab: PackedScene
 var death_prefab: PackedScene
 
 @onready var damage_digit_marker = $DamageDigitMarker
+@onready var health_bar: ProgressBar = $HealtBar/ProgressBar
 
 func _ready():
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
 	meat_prefab = preload("res://misc/meat.tscn")
 	death_prefab = preload("res://misc/skull.tscn")
+	health_bar.max_value = health
+
+func _process(delta):
+	health_bar.value = health
 
 func damage(amount: int) -> void:
 	health -= amount
