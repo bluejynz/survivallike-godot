@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ditvc7kdt2d8i"]
+[gd_scene load_steps=16 format=3 uid="uid://ditvc7kdt2d8i"]
 
 [ext_resource type="Texture2D" uid="uid://dcmu5ajncil7y" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_5mkyo"]
 [ext_resource type="Script" path="res://entities/enemies/behaviors/follow_player.gd" id="1_x7y2v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsxjm4dfdh7uf" path="res://misc/money.tscn" id="2_vo7hr"]
 [ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="3_kcjkp"]
 [ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="6_c8ddu"]
+[ext_resource type="AudioStream" uid="uid://3pkwow76d5jk" path="res://addons/sounds/monster-damage.wav" id="7_6apx8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pruve"]
 atlas = ExtResource("1_5mkyo")
@@ -87,4 +88,8 @@ script = ExtResource("1_x7y2v")
 position = Vector2(0, -42)
 
 [node name="HealtBar" parent="." instance=ExtResource("6_c8ddu")]
-scale = Vector2(-0.236312, -0.208222)
+position = Vector2(0, 17)
+scale = Vector2(0.236, 0.208)
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6apx8")

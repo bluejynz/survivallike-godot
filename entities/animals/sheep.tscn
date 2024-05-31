@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0585uwog8yts"]
+[gd_scene load_steps=25 format=3 uid="uid://b0585uwog8yts"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_m042j"]
 [ext_resource type="PackedScene" uid="uid://dqwqa8prc3hk0" path="res://misc/meat.tscn" id="2_wt07q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://66vk0ev7sgfh" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Idle.png" id="4_u1ttg"]
 [ext_resource type="Script" path="res://entities/animals/behaviors/run_from_player.gd" id="5_kfe0h"]
 [ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="6_iywpe"]
+[ext_resource type="AudioStream" uid="uid://c8rvq1t7l2s5x" path="res://addons/sounds/sheep-damage.wav" id="7_v1nir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_km1um"]
 atlas = ExtResource("4_u1ttg")
@@ -159,4 +160,8 @@ debug_color = Color(0.485342, 0.580921, 0.269931, 0)
 position = Vector2(0, -29)
 
 [node name="HealtBar" parent="." instance=ExtResource("6_iywpe")]
-scale = Vector2(-0.236312, -0.208222)
+position = Vector2(0, 14)
+scale = Vector2(0.236, 0.208)
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_v1nir")

@@ -17,6 +17,11 @@ var death_prefab: PackedScene
 @onready var damage_digit_marker = $DamageDigitMarker
 @onready var health_bar: ProgressBar = $HealtBar/ProgressBar
 
+@onready var damage_sound: AudioStreamPlayer2D = $DamageAudio
+@onready var sheep_death_sound = preload("res://addons/sounds/sheep-death.wav")
+@onready var monster_death_sound = preload("res://addons/sounds/monster-death.wav")
+@onready var death_audio_player: PackedScene = preload("res://misc/audio_player.tscn")
+
 func _ready():
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
 	meat_prefab = preload("res://misc/meat.tscn")
@@ -34,6 +39,7 @@ func damage(amount: int) -> void:
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, .2)
+	damage_sound.play()
 	
 	var damage_digit = damage_digit_prefab.instantiate()
 	damage_digit.value = amount
@@ -47,7 +53,15 @@ func damage(amount: int) -> void:
 		die()
 
 func die() -> void:
-	GameManager.monsters_slayed += 1
+	var audio_player = death_audio_player.instantiate()
+	audio_player.position = position
+	get_tree().root.add_child(audio_player)
+	
+	if not is_in_group("animals"):
+		GameManager.monsters_slayed += 1
+		audio_player.play_audio(monster_death_sound)
+	else:
+		audio_player.play_audio(sheep_death_sound)
 	
 	if death_prefab:
 		var death_object = death_prefab.instantiate()
@@ -56,7 +70,6 @@ func die() -> void:
 	
 	drop_items()
 	GameManager.mob_killed.emit(xp_given)
-	
 	queue_free()
 
 func drop_items() -> void:
@@ -65,3 +78,6 @@ func drop_items() -> void:
 			var item_object = item.instantiate()
 			item_object.position = position
 			get_parent().add_child(item_object)
+
+func _on_death_audio_finished():
+	queue_free()

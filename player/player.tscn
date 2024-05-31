@@ -1,9 +1,27 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc3abgevaik7x"]
+[gd_scene load_steps=24 format=3 uid="uid://cc3abgevaik7x"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_jook0"]
 [ext_resource type="Texture2D" uid="uid://chs26awqrak4l" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_vs62s"]
 [ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="2_updn1"]
 [ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="4_32as7"]
+[ext_resource type="AudioStream" uid="uid://0le8te4apheu" path="res://addons/sounds/player-damage.wav" id="5_ymfco"]
+[ext_resource type="AudioStream" uid="uid://bmsydnmxr8ur8" path="res://addons/sounds/sword-swing.wav" id="6_cuw8u"]
+[ext_resource type="AudioStream" uid="uid://ow63nu4rk0gg" path="res://addons/sounds/game-over-arcade.wav" id="7_ip506"]
+
+[sub_resource type="Animation" id="Animation_4dggg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_hcx2p"]
 resource_name = "default"
@@ -21,21 +39,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(2, 2, 1.5, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_4dggg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1cf6r"]
 _data = {
 "RESET": SubResource("Animation_4dggg"),
@@ -46,7 +49,7 @@ _data = {
 radius = 15.0352
 
 [sub_resource type="Animation" id="Animation_7ql6b"]
-length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,6 +61,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundsNode/AttackAudio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_8kmqa"]
@@ -148,6 +163,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"deal_damage_to_enemies"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SoundsNode/AttackAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_4vjnp"]
@@ -341,3 +368,14 @@ scale = Vector2(0.296731, 0.296731)
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -104.833)
+
+[node name="SoundsNode" type="Node2D" parent="."]
+
+[node name="DamageAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
+stream = ExtResource("5_ymfco")
+
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
+stream = ExtResource("6_cuw8u")
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
+stream = ExtResource("7_ip506")

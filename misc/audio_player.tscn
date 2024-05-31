@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy4kistrtbhhi"]
+
+[ext_resource type="AudioStream" uid="uid://dafg5h22w42f7" path="res://addons/sounds/monster-death.wav" id="1_gb2g1"]
+[ext_resource type="Script" path="res://misc/audio_player.gd" id="2_a3qfg"]
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_gb2g1")
+script = ExtResource("2_a3qfg")

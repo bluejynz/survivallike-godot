@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $HealtBar/ProgressBar
 @onready var damage_digit_marker = $DamageDigitMarker
 
+@onready var damage_sound: AudioStreamPlayer2D = $SoundsNode/DamageAudio
+@onready var death_sound: AudioStreamPlayer2D = $SoundsNode/DeathAudio
+
 @export_category("Movement")
 @export var speed: float = 3
 
@@ -42,6 +45,7 @@ func _ready():
 	level_up_display_prefab = preload("res://ui/level_up_display.tscn")
 	GameManager.player = self
 	GameManager.level_up.connect(level_up)
+	death_sound.connect("finished", Callable(self, "_on_death_audio_finished"))
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -148,6 +152,7 @@ func damage(amount: int) -> void:
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, .2)
+	damage_sound.play()
 	
 	if health <= 0:
 		die()
@@ -160,7 +165,7 @@ func die() -> void:
 		death_object.position = position
 		get_parent().add_child(death_object)
 	
-	queue_free()
+	death_sound.play()
 
 func heal(amount: int) -> int:
 	health += amount
@@ -190,3 +195,6 @@ func level_up():
 	else:
 		level_up_display.global_position = global_position
 	get_parent().add_child(level_up_display)
+
+func _on_death_audio_finished():
+	queue_free()

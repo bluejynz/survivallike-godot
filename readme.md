@@ -29,12 +29,11 @@ Final project for DIO + Santander's Bootcamp
 
 ### UI
 
-- On Game Over screen:
-	- Add button to go to main menu
 - Add a main menu
-- Add fullscreen mode for desktop
+	- Add fullscreen mode for desktop
 
 ### Gameplay
 - Create leveling/upgrade system
 - Add more spells
 - Add more enemies
+- Add sound effects
