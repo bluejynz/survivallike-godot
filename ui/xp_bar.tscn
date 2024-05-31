@@ -61,6 +61,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_igv1p")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = -2672.0
 offset_top = -91.0
 offset_right = 2672.0

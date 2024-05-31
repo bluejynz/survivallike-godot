@@ -257,6 +257,6 @@ position = Vector2(751, 1374)
 [node name="GameUI" parent="." instance=ExtResource("3_ydcnf")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -80.0
+volume_db = -20.0
 autoplay = true
 script = ExtResource("13_fxw4l")

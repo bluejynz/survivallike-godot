@@ -26,10 +26,10 @@ func update_labels():
 			"Panel2":
 				label.text = "Max Health +2 (%d)" % [GameManager.player.max_health+2]
 			"Panel3":
-				if GameManager.player.is_sword_damage_caps():
+				if GameManager.player.is_ritual_interval_caps():
 					label.text = "Ritual Cooldown (Max)"
 				else:
-					label.text = "Ritual Cooldown -1s (%ds)" % [GameManager.player.ritual_interval-2]
+					label.text = "Ritual Cooldown -1s (%ds)" % [GameManager.player.ritual_interval-1]
  
 func _input(event):
 	if event is InputEventMouseButton:
