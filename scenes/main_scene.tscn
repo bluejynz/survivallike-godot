@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://diwxy7d6gcnd7"]
+[gd_scene load_steps=22 format=3 uid="uid://diwxy7d6gcnd7"]
 
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="1_5i5c7"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gwd85"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dr3qj1p6e3mhm" path="res://misc/ritual.tscn" id="6_pjjix"]
 [ext_resource type="Script" path="res://systems/difficulty_system.gd" id="10_7rtxp"]
 [ext_resource type="Script" path="res://scenes/AudioStreamPlayer.gd" id="13_fxw4l"]
+[ext_resource type="PackedScene" uid="uid://c36icesh2e6pk" path="res://ui/level_up_ui.tscn" id="14_ak4tt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -85,6 +86,7 @@ y_sort_enabled = true
 script = ExtResource("1_s14m8")
 game_ui = NodePath("GameUI")
 game_over_ui_template = ExtResource("2_0n6a7")
+level_up_ui_template = ExtResource("14_ak4tt")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

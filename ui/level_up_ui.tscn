@@ -1,0 +1,228 @@
+[gd_scene load_steps=12 format=3 uid="uid://c36icesh2e6pk"]
+
+[ext_resource type="Texture2D" uid="uid://dlo2qvp5uux23" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Carved_9Slides.png" id="1_6dx2h"]
+[ext_resource type="Script" path="res://ui/level_up_ui.gd" id="1_11514"]
+[ext_resource type="Texture2D" uid="uid://b3lljr3g5e52a" path="res://addons/Tiny Swords (Update 010)/UI/Buttons/Button_Blue.png" id="2_em7pl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsl0u"]
+texture = ExtResource("1_6dx2h")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="SystemFont" id="SystemFont_3eke4"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvncc"]
+font = SubResource("SystemFont_3eke4")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_lj2sv"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1waje"]
+font = SubResource("SystemFont_lj2sv")
+font_size = 48
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wgn1"]
+texture = ExtResource("2_em7pl")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 28.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(4, 0, 56, 60)
+
+[sub_resource type="SystemFont" id="SystemFont_bdl7b"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktjjm"]
+font = SubResource("SystemFont_bdl7b")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelUpUI" type="CanvasLayer"]
+script = ExtResource("1_11514")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.0
+offset_top = -176.0
+offset_right = 382.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Panel" type="Panel" parent="."]
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.0
+offset_top = -176.0
+offset_right = 382.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsl0u")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -123.0
+offset_right = 110.5
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select an upgrade"
+label_settings = SubResource("LabelSettings_qvncc")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -185.0
+offset_right = 117.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_1waje")
+
+[node name="ItemList" type="ItemList" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.0
+offset_top = -70.0
+offset_right = 346.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel1" type="Panel" parent="Panel/ItemList"]
+layout_mode = 0
+offset_right = 195.0
+offset_bottom = 247.0
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
+
+[node name="Label1" type="Label" parent="Panel/ItemList/Panel1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -104.5
+offset_right = 75.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sword Damage +1"
+label_settings = SubResource("LabelSettings_ktjjm")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="Panel/ItemList"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -123.5
+offset_right = 97.5
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
+
+[node name="Label2" type="Label" parent="Panel/ItemList/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -104.5
+offset_right = 75.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Max Health +2"
+label_settings = SubResource("LabelSettings_ktjjm")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel3" type="Panel" parent="Panel/ItemList"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.0
+offset_top = -123.5
+offset_right = 344.0
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
+
+[node name="Label3" type="Label" parent="Panel/ItemList/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -104.5
+offset_right = 75.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Magic Cooldown -2s"
+label_settings = SubResource("LabelSettings_ktjjm")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

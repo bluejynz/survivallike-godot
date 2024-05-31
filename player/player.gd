@@ -37,6 +37,10 @@ var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
 
+var max_sword_damage: int = 10
+var max_ritual_damage: int = 2
+var min_ritual_interval: int = 8
+
 var damage_digit_prefab: PackedScene
 var level_up_display_prefab: PackedScene
 
@@ -48,6 +52,8 @@ func _ready():
 	death_sound.connect("finished", Callable(self, "_on_death_audio_finished"))
 
 func _process(delta: float) -> void:
+	if GameManager.is_game_paused: return
+	
 	GameManager.player_position = position
 	read_input()
 	
@@ -66,6 +72,8 @@ func _process(delta: float) -> void:
 	health_bar.value = health
 
 func _physics_process(delta: float) -> void:
+	if GameManager.is_game_paused: return
+	
 	var target_velocity = input_vector * speed * 100
 	if is_attacking:
 		target_velocity *= .25
@@ -198,3 +206,28 @@ func level_up():
 
 func _on_death_audio_finished():
 	queue_free()
+
+func upgrade_max_health(amount: int):
+	max_health += amount
+
+func upgrade_sword_damage(amount: int):
+	sword_damage += amount
+
+func is_sword_damage_caps() -> bool:
+	if sword_damage >= max_sword_damage: return true
+	else: return false
+
+#unnused
+func upgrade_ritual_damage(amount: int):
+	ritual_damage += amount
+
+func is_ritual_damage_caps() -> bool:
+	if ritual_damage >= max_ritual_damage: return true
+	else: return false
+
+func reduce_ritual_interval(amount: int):
+	ritual_interval -= amount
+
+func is_ritual_interval_caps() -> bool:
+	if ritual_interval <= min_ritual_interval: return true
+	else: return false

@@ -10,7 +10,7 @@ func _ready():
 	sprite = enemy.get_node("AnimatedSprite2D")
 
 func _physics_process(delta: float) -> void:
-	if GameManager.is_game_over: return
+	if GameManager.is_game_over or GameManager.is_game_paused: return
 	
 	var difference = GameManager.player_position - enemy.position
 	var input_vector = difference.normalized()

@@ -16,6 +16,7 @@ var elapsed_time: float = 0
 var elapsed_time_text: String
 var monsters_slayed: int = 0
 
+var is_game_paused: bool = false
 var is_game_over: bool = false
 
 func _ready():
@@ -23,6 +24,7 @@ func _ready():
 	config_mobile()
 
 func _process(delta):
+	if is_game_paused: return
 	elapsed_time += delta
 	var elapsed_time_in_seconds: int = floori(GameManager.elapsed_time)
 	var seconds: int = elapsed_time_in_seconds % 60
@@ -52,3 +54,6 @@ func config_mobile():
 		ProjectSettings.set_setting("input_devices/pointing/emulate_mouse_from_touch", false)
 		# next line deletes joystick when playing on device that's not mobile
 		#joystick.queue_free()
+
+func toggle_pause():
+	is_game_paused = not is_game_paused

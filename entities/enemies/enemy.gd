@@ -29,6 +29,8 @@ func _ready():
 	health_bar.max_value = health
 
 func _process(delta):
+	if GameManager.is_game_paused: return
+	
 	health_bar.value = health
 
 func damage(amount: int) -> void:

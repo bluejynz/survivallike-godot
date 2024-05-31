@@ -17,6 +17,8 @@ func _ready():
 	set_deferred("monitoring", true)
 
 func _process(delta: float) -> void:
+	if GameManager.is_game_over or GameManager.is_game_paused: return
+	
 	detection_area.body_entered.connect(detect_player)
 	detection_area.body_exited.connect(stop_running)
 	
@@ -24,6 +26,8 @@ func _process(delta: float) -> void:
 	update_stop_running_cooldown(delta)
 
 func _physics_process(delta: float) -> void:
+	if GameManager.is_game_over or GameManager.is_game_paused: return
+	
 	if is_running:
 		var difference = GameManager.player_position - enemy.position
 		var input_vector = -difference.normalized()

@@ -24,6 +24,7 @@ Final project for DIO + Santander's Bootcamp
 - Mob drops
 - UI with elapsed time and gold counter
 - Game over and automatic restart
+- Sound effects
 
 ## Things I want to implement
 
@@ -31,9 +32,9 @@ Final project for DIO + Santander's Bootcamp
 
 - Add a main menu
 	- Add fullscreen mode for desktop
+- Add attack button
 
 ### Gameplay
 - Create leveling/upgrade system
 - Add more spells
 - Add more enemies
-- Add sound effects
