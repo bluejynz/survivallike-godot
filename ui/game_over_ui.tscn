@@ -274,5 +274,5 @@ offset_right = 123.5
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Or click to restart"
+text = "Or press Enter to restart"
 label_settings = SubResource("LabelSettings_mdgnk")

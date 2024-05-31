@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		restart_game()
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event.is_action_pressed("return"):
 		restart_cooldown = 0
 
 func restart_game():
