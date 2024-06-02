@@ -10,6 +10,7 @@ extends CanvasLayer
 const UpgradesEnum = preload("res://player/upgrades_enum.gd").UpgradesEnum
 
 var upgrades: Array[int]
+var filtered_upgrades: Array[int]
 
 func _ready():
 	GameManager.toggle_pause()
@@ -20,17 +21,70 @@ func _process(delta):
 	if GameManager.is_game_over: dispose_menu()
 
 func random_upgrades() -> Array[int]:
-	var random_numbers: Array[int]
+	filtered_upgrades = upgrades_without_caps()
 	
-	while random_numbers.size() < 3:
-		var rng = randi() % UpgradesEnum.size()
-		if not random_numbers.has(rng):
-			random_numbers.append(rng)
+	while upgrades.size() < 3:
+		var rng = randi() % (filtered_upgrades.size())
+		if not upgrades.has(filtered_upgrades[rng]):
+			upgrades.append(filtered_upgrades[rng])
+	#is_upgrades_caps()
 	
-	return random_numbers
+	return upgrades
+
+func upgrades_without_caps() -> Array[int]:
+	var filtered_upgrades: Array[int] = []
+	for i in UpgradesEnum.values():
+		match UpgradesEnum.find_key(i):
+			"MOVE_SPEED":
+				if not GameManager.player.is_move_speed_caps():
+					filtered_upgrades.append(i)
+				else: print("caps ", UpgradesEnum.find_key(i))
+			"SWORD_DAMAGE":
+				if not GameManager.player.is_sword_damage_caps():
+					filtered_upgrades.append(i)
+				else: print("caps ", UpgradesEnum.find_key(i))
+			"RITUAL_DAMAGE":
+				if not GameManager.player.is_ritual_damage_caps():
+					filtered_upgrades.append(i)
+				else: print("caps ", UpgradesEnum.find_key(i))
+			"RITUAL_INTERVAL":
+				if not GameManager.player.is_ritual_interval_caps():
+					filtered_upgrades.append(i)
+				else: print("caps ", UpgradesEnum.find_key(i))
+			"MAX_HEALTH":
+				filtered_upgrades.append(i)
+			"KNOCKBACK_STRENGTH":
+				if not GameManager.player.is_knockback_strength_caps():
+					filtered_upgrades.append(i)
+				else: print("caps ", UpgradesEnum.find_key(i))
+			"DEFAULT":
+				filtered_upgrades.append(i)
+	return filtered_upgrades
+
+func is_upgrades_caps():
+	for index in range(3):
+		match UpgradesEnum.find_key(upgrades[index]):
+			"MOVE_SPEED":
+				if GameManager.player.is_move_speed_caps():
+					upgrades[index] = UpgradesEnum.size() - 1
+			"SWORD_DAMAGE":
+				if GameManager.player.is_sword_damage_caps():
+					upgrades[index] = UpgradesEnum.size() - 1
+			"RITUAL_DAMAGE":
+				if GameManager.player.is_ritual_damage_caps():
+					upgrades[index] = UpgradesEnum.size() - 1
+			"RITUAL_INTERVAL":
+				if GameManager.player.is_ritual_interval_caps():
+					upgrades[index] = UpgradesEnum.size() - 1
+			"MAX_HEALTH":
+				pass
+			"KNOCKBACK_STRENGTH":
+				if GameManager.player.is_knockback_strength_caps():
+					upgrades[index] = UpgradesEnum.size() - 1
+			"DEFAULT":
+				pass
 
 func update_label_text(index: int, label: Label):
-	#print(UpgradesEnum.find_key(index))
 	match UpgradesEnum.find_key(index):
 		"MOVE_SPEED":
 			if GameManager.player.is_move_speed_caps():
@@ -61,9 +115,11 @@ func update_label_text(index: int, label: Label):
 			else:
 				var newStrength: float = GameManager.player.knockback_strength+(GameManager.player.knockback_strength*0.08)
 				label.text = "Knockback Strength +8%"# ({})".format([newStrength], "{}")
+		"DEFAULT":
+			var gold: int = GameManager.gold_count + 20
+			label.text = "Gold +100"# ({})".format([newStrength], "{}")
 
 func update_labels():
-	print(upgrades)
 	for panel in panels:
 		var label = panel.get_child(0)
 		match panel.name:
@@ -130,6 +186,9 @@ func handle_option(index: int) -> bool:
 			else:
 				GameManager.player.upgrade_knockback_strength()
 				return true
+		"DEFAULT":
+			GameManager.player.receive_gold(100)
+			return true
 	return false
 
 func dispose_menu():

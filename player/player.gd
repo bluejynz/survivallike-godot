@@ -50,8 +50,8 @@ var level_up_display_prefab: PackedScene
 
 func _ready():
 	#TODO: remove this
-	#speed = 3
-	#sword_damage = 20
+	speed = 3
+	sword_damage = 20
 	#
 	GameManager.player = self
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
@@ -254,3 +254,6 @@ func upgrade_move_speed():
 func is_move_speed_caps() -> bool:
 	if speed >= speed_caps: return true
 	else: return false
+
+func receive_gold(amount: int):
+	GameManager.gold_count += amount

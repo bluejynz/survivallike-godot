@@ -8,7 +8,7 @@ func _ready():
 
 func on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		GameManager.gold_count += (randi_range(3, 5) * 5)
+		GameManager.player.receive_gold((randi_range(3, 5) * 5))
 		
 		var audio = audio_player.instantiate()
 		audio.position = position
