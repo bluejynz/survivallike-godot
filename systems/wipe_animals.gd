@@ -13,13 +13,10 @@ func _process(delta):
 
 func get_and_wipe_all_animals():
 	var animals = GameManager.get_tree().get_nodes_in_group("animals")
-	print("animals: ", animals.size())
 	for animal in animals:
 		if not is_on_screen(animal):
-			#print("fui: ", animal.global_position)
 			animal.queue_free()
 	animals = GameManager.get_tree().get_nodes_in_group("animals")
-	#print("after: ", animals.size())
 
 func is_on_screen(animal) -> bool:
 	var viewport = get_viewport().get_visible_rect()
