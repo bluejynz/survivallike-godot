@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://diwxy7d6gcnd7"]
+[gd_scene load_steps=23 format=3 uid="uid://diwxy7d6gcnd7"]
 
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="1_5i5c7"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gwd85"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://systems/difficulty_system.gd" id="10_7rtxp"]
 [ext_resource type="Script" path="res://scenes/AudioStreamPlayer.gd" id="13_fxw4l"]
 [ext_resource type="PackedScene" uid="uid://c36icesh2e6pk" path="res://ui/level_up_ui.tscn" id="14_ak4tt"]
+[ext_resource type="Script" path="res://systems/wipe_animals.gd" id="15_xawvt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -260,3 +261,8 @@ position = Vector2(751, 1374)
 volume_db = -20.0
 autoplay = true
 script = ExtResource("13_fxw4l")
+
+[node name="WipeSystem" type="Node2D" parent="."]
+
+[node name="WipeAnimals" type="Node2D" parent="WipeSystem"]
+script = ExtResource("15_xawvt")

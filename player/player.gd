@@ -50,8 +50,8 @@ var level_up_display_prefab: PackedScene
 
 func _ready():
 	#TODO: remove this
-	speed = 3
-	sword_damage = 20
+	#speed = 3
+	#sword_damage = 20
 	#
 	GameManager.player = self
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")

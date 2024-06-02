@@ -37,3 +37,4 @@ Final project for DIO + Santander's Bootcamp
 ### Gameplay
 - Add more spells
 - Add more enemies
+- Every now and then wipe animals that aren't on screen
