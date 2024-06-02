@@ -4,6 +4,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $ProgressBar
 var max_xp: int = 100
 var current_xp: int = 0
+#var current_xp: int = 98
 
 func _ready():
 	progress_bar.max_value = max_xp

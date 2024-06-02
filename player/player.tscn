@@ -74,6 +74,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8kmqa"]
 resource_name = "attack_down_1"
@@ -100,7 +114,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }
@@ -130,7 +144,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }
@@ -160,7 +174,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }
@@ -202,7 +216,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }
@@ -232,7 +246,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }
@@ -262,7 +276,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"deal_damage_to_enemies"
 }]
 }

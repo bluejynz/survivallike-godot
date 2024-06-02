@@ -54,6 +54,14 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
+func knockback(knockback_strength: int):
+	var direction = (GameManager.player.position - position).normalized()
+	var knockback_position = position - direction * knockback_strength
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "position", knockback_position, .5)
+
 func die() -> void:
 	var audio_player = death_audio_player.instantiate()
 	audio_player.position = position

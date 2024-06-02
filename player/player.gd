@@ -12,10 +12,11 @@ extends CharacterBody2D
 @onready var death_sound: AudioStreamPlayer2D = $SoundsNode/DeathAudio
 
 @export_category("Movement")
-@export var speed: float = 3
+@export var speed: float = 2
+var speed_caps: float = 4
 
 @export_category("Sword")
-@export var sword_damage: int = 2
+@export var sword_damage: int = 1
 
 @export_category("Ritual")
 @export var ritual_damage: int = 1
@@ -28,6 +29,9 @@ extends CharacterBody2D
 @export var health: int = 100
 
 var level: int = 0
+
+var knockback_strength: float = 20
+var knockback_strength_caps: float = 50
 
 var input_vector: Vector2 = Vector2(0, 0)
 var attack_cooldown: float = 0
@@ -45,9 +49,13 @@ var damage_digit_prefab: PackedScene
 var level_up_display_prefab: PackedScene
 
 func _ready():
+	#TODO: remove this
+	#speed = 3
+	#sword_damage = 20
+	#
+	GameManager.player = self
 	damage_digit_prefab = preload("res://ui/damage_digit.tscn")
 	level_up_display_prefab = preload("res://ui/level_up_display.tscn")
-	GameManager.player = self
 	GameManager.level_up.connect(level_up)
 	death_sound.connect("finished", Callable(self, "_on_death_audio_finished"))
 
@@ -113,7 +121,7 @@ func attack() -> void:
 	is_attacking = true
 	attack_cooldown = .6
 
-func deal_damage_to_enemies() -> void:
+func deal_damage_to_enemies(knockback: bool) -> void:
 	var bodies = sword_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("enemies"):
@@ -129,6 +137,8 @@ func deal_damage_to_enemies() -> void:
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			if dot_product > .4:
 				enemy.damage(sword_damage)
+				if knockback and not enemy.is_in_group("animals"):
+					enemy.knockback(knockback_strength)
 
 func update_attack_cooldown(delta: float) -> void:
 	if is_attacking:
@@ -217,7 +227,6 @@ func is_sword_damage_caps() -> bool:
 	if sword_damage >= max_sword_damage: return true
 	else: return false
 
-#unnused
 func upgrade_ritual_damage(amount: int):
 	ritual_damage += amount
 
@@ -230,4 +239,18 @@ func reduce_ritual_interval(amount: int):
 
 func is_ritual_interval_caps() -> bool:
 	if ritual_interval <= min_ritual_interval: return true
+	else: return false
+
+func upgrade_knockback_strength():
+	knockback_strength += knockback_strength * 0.08
+
+func is_knockback_strength_caps() -> bool:
+	if knockback_strength >= knockback_strength_caps: return true
+	else: return false
+
+func upgrade_move_speed():
+	speed += speed * 0.05
+
+func is_move_speed_caps() -> bool:
+	if speed >= speed_caps: return true
 	else: return false
