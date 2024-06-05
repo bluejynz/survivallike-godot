@@ -12,6 +12,8 @@ const UpgradesEnum = preload("res://player/upgrades_enum.gd").UpgradesEnum
 var upgrades: Array[int]
 var filtered_upgrades: Array[int]
 
+var is_menu_loading: bool = true
+
 func _ready():
 	GameManager.toggle_pause()
 	upgrades = random_upgrades()
@@ -19,6 +21,9 @@ func _ready():
 
 func _process(delta):
 	if GameManager.is_game_over: dispose_menu()
+
+func menu_not_loading():
+	is_menu_loading = false
 
 func update_button_animation(panel: Panel, is_mouse_over: bool):
 	if is_mouse_over:
@@ -108,6 +113,7 @@ func update_labels():
 				update_label_text(upgrades[2], label)
  
 func _input(event):
+	if is_menu_loading: return
 	for panel in panels:
 		if event is InputEventMouseButton:
 			if event.button_index == 1 and event.pressed:

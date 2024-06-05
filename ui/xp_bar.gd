@@ -6,7 +6,9 @@ var max_xp: int = 100
 var current_xp: int = 0
 
 func _ready():
+	#TODO: remove this
 	#current_xp = 98
+	#
 	progress_bar.max_value = max_xp
 	progress_bar.value = current_xp
 	GameManager.mob_killed.connect(gain_xp)
