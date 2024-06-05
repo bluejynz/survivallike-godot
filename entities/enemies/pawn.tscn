@@ -65,8 +65,8 @@ radius = 14.0
 motion_mode = 1
 script = ExtResource("1_y81ao")
 drop_items_and_chance = {
-ExtResource("2_vo7hr"): 0.7,
-ExtResource("3_kcjkp"): 0.15
+ExtResource("2_vo7hr"): 0.05,
+ExtResource("3_kcjkp"): 0.08
 }
 xp_given = 12
 
@@ -83,6 +83,7 @@ shape = SubResource("CircleShape2D_woexr")
 
 [node name="FollowPlayer" type="Node" parent="."]
 script = ExtResource("1_x7y2v")
+speed = 1.2
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -42)

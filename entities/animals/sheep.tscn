@@ -132,7 +132,7 @@ script = ExtResource("1_m042j")
 health = 6
 hit_damage = 0
 drop_items_and_chance = {
-ExtResource("2_wt07q"): 0.75
+ExtResource("2_wt07q"): 0.1
 }
 xp_given = 4
 
