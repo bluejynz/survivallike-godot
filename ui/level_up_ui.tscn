@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c36icesh2e6pk"]
+[gd_scene load_steps=16 format=3 uid="uid://c36icesh2e6pk"]
 
 [ext_resource type="Texture2D" uid="uid://dlo2qvp5uux23" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Carved_9Slides.png" id="1_6dx2h"]
 [ext_resource type="Script" path="res://ui/level_up_ui.gd" id="1_11514"]
 [ext_resource type="Texture2D" uid="uid://b3lljr3g5e52a" path="res://addons/Tiny Swords (Update 010)/UI/Buttons/Button_Blue.png" id="2_em7pl"]
+[ext_resource type="AudioStream" uid="uid://qn0ctj6drdv6" path="res://addons/sounds/level-up.wav" id="4_segyu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsl0u"]
 texture = ExtResource("1_6dx2h")
@@ -52,19 +53,74 @@ font = SubResource("SystemFont_bdl7b")
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_o5aif"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.235294)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_y1b4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.235294)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fa1sf"]
+_data = {
+"RESET": SubResource("Animation_y1b4w"),
+"default": SubResource("Animation_o5aif")
+}
+
 [node name="LevelUpUI" type="CanvasLayer"]
 script = ExtResource("1_11514")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -382.0
-offset_top = -176.0
-offset_right = 382.0
-offset_bottom = 248.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.235294)
@@ -135,7 +191,6 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 195.0
 offset_bottom = 247.0
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
 
 [node name="Label1" type="Label" parent="Panel/ItemList/Panel1"]
@@ -170,7 +225,6 @@ offset_right = 97.5
 offset_bottom = 123.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
 
 [node name="Label2" type="Label" parent="Panel/ItemList/Panel2"]
@@ -205,7 +259,6 @@ offset_right = 344.0
 offset_bottom = 123.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3wgn1")
 
 [node name="Label3" type="Label" parent="Panel/ItemList/Panel3"]
@@ -226,3 +279,14 @@ label_settings = SubResource("LabelSettings_ktjjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fa1sf")
+}
+autoplay = "default"
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_segyu")
+volume_db = -10.0
+autoplay = true
