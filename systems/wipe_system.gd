@@ -8,7 +8,7 @@ func _ready():
 
 func _process(delta):
 	if GameManager.is_game_over: return
-	
+	if GameManager.is_game_paused: return
 	update_cooldown(delta)
 
 func get_and_wipe_all_enemies():
