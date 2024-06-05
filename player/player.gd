@@ -17,6 +17,7 @@ var speed_caps: float = 4
 
 @export_category("Sword")
 @export var sword_damage: int = 1
+@export var knockback_strength: float = 10
 
 @export_category("Ritual")
 @export var ritual_damage: int = 1
@@ -30,8 +31,7 @@ var speed_caps: float = 4
 
 var level: int = 0
 
-var knockback_strength: float = 20
-var knockback_strength_caps: float = 50
+var knockback_strength_caps: float = 30
 
 var input_vector: Vector2 = Vector2(0, 0)
 var attack_cooldown: float = 0
