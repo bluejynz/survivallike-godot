@@ -26,15 +26,16 @@ Final project for DIO + Santander's Bootcamp
 - Game over and automatic restart
 - Sound effects
 - Leveling/upgrade system
+- Main menu
+- New map
+- Wipe (every 30s)
 
 ## Things I want to implement
 
 ### UI
 
-- Add a main menu
-	- Add fullscreen mode for desktop
+- Add configs
 
 ### Gameplay
 - Add more spells
 - Add more enemies
-- Every now and then wipe animals that aren't on screen
