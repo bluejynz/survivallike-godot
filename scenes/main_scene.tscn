@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://g3i2ussnsih" path="res://addons/Tiny Swords (Update 010)/Deco/15.png" id="12_um53h"]
 [ext_resource type="Script" path="res://scenes/audio_stream_player.gd" id="13_fxw4l"]
 [ext_resource type="PackedScene" uid="uid://c36icesh2e6pk" path="res://ui/level_up_ui.tscn" id="14_ak4tt"]
-[ext_resource type="Script" path="res://systems/wipe_animals.gd" id="15_xawvt"]
+[ext_resource type="Script" path="res://systems/wipe_system.gd" id="15_xawvt"]
 [ext_resource type="PackedScene" uid="uid://d3i81lwlomwnt" path="res://misc/foam_tile.tscn" id="18_h3y44"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
@@ -232,8 +232,6 @@ autoplay = true
 script = ExtResource("13_fxw4l")
 
 [node name="WipeSystem" type="Node2D" parent="."]
-
-[node name="WipeAnimals" type="Node2D" parent="WipeSystem"]
 script = ExtResource("15_xawvt")
 
 [node name="Foam" type="Node2D" parent="."]
