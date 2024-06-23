@@ -2,10 +2,12 @@ extends Node
 
 @export var game_ui: CanvasLayer
 @export var game_over_ui_template: PackedScene
+@export var highscore_ui_template: PackedScene
 @export var level_up_ui_template: PackedScene
 
 func _ready():
 	GameManager.game_over.connect(trigger_game_over)
+	GameManager.highscore.connect(trigger_highscore)
 	GameManager.level_up.connect(trigger_level_up)
 
 func trigger_level_up():
@@ -19,3 +21,11 @@ func trigger_game_over():
 	
 	var game_over_ui: GameOverUI = game_over_ui_template.instantiate()
 	add_child(game_over_ui)
+
+func trigger_highscore():
+	if game_ui:
+		game_ui.queue_free()
+		game_ui = null
+	
+	var highscore_ui: GameOverUI = highscore_ui_template.instantiate()
+	add_child(highscore_ui)

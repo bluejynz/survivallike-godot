@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bybqrou3pp4ep" path="res://ui/game_over_ui.tscn" id="2_0n6a7"]
 [ext_resource type="PackedScene" uid="uid://cc3abgevaik7x" path="res://player/player.tscn" id="2_mg7ye"]
 [ext_resource type="Texture2D" uid="uid://pgqvbap1rpej" path="res://addons/Tiny Swords (Update 010)/Deco/07.png" id="2_t0oem"]
+[ext_resource type="PackedScene" uid="uid://cdis0hr668k3p" path="res://ui/highscore_ui.tscn" id="3_itdfq"]
 [ext_resource type="PackedScene" uid="uid://fgb00tra0pdh" path="res://ui/game_ui.tscn" id="3_ydcnf"]
 [ext_resource type="Texture2D" uid="uid://du0i2cjf0du2q" path="res://addons/Tiny Swords (Update 010)/Deco/02.png" id="3_yywg3"]
 [ext_resource type="Texture2D" uid="uid://bxamb5rnxfytg" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="4_xkvfw"]
@@ -18,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://c36icesh2e6pk" path="res://ui/level_up_ui.tscn" id="14_ak4tt"]
 [ext_resource type="Script" path="res://systems/wipe_system.gd" id="15_xawvt"]
 [ext_resource type="PackedScene" uid="uid://d3i81lwlomwnt" path="res://misc/foam_tile.tscn" id="18_h3y44"]
-[ext_resource type="Script" path="res://systems/highscore/highscore.gd" id="19_yu7h6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -103,6 +103,7 @@ y_sort_enabled = true
 script = ExtResource("1_s14m8")
 game_ui = NodePath("GameUI")
 game_over_ui_template = ExtResource("2_0n6a7")
+highscore_ui_template = ExtResource("3_itdfq")
 level_up_ui_template = ExtResource("14_ak4tt")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1140,6 +1141,3 @@ position = Vector2(-1760, 1952)
 
 [node name="FoamTile190" parent="Foam" instance=ExtResource("18_h3y44")]
 position = Vector2(-1760, 2016)
-
-[node name="HighscoreSystem" type="Node2D" parent="."]
-script = ExtResource("19_yu7h6")

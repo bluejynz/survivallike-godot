@@ -1,0 +1,287 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdis0hr668k3p"]
+
+[ext_resource type="Texture2D" uid="uid://45xf5j5elop4" path="res://addons/Tiny Swords (Update 010)/UI/Ribbons/Ribbon_Yellow_3Slides.png" id="1_56bdd"]
+[ext_resource type="Texture2D" uid="uid://l8xbfikn3c22" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Banner_Horizontal.png" id="2_cfm33"]
+[ext_resource type="Texture2D" uid="uid://dn08woasdnx2v" path="res://addons/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_6lq47"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gw8v"]
+texture = ExtResource("1_56bdd")
+texture_margin_left = 64.0
+texture_margin_right = 64.0
+axis_stretch_horizontal = 2
+region_rect = Rect2(0, 0, 192, 64)
+
+[sub_resource type="SystemFont" id="SystemFont_rll4i"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkwik"]
+font = SubResource("SystemFont_rll4i")
+font_size = 52
+font_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_br2fn"]
+texture = ExtResource("2_cfm33")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[sub_resource type="SystemFont" id="SystemFont_w7pog"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8cxe"]
+font = SubResource("SystemFont_w7pog")
+font_size = 24
+font_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_kx3b6"]
+font_names = PackedStringArray("Consolas")
+font_weight = 999
+
+[sub_resource type="Animation" id="Animation_28r3m"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.705882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(293, -130), Vector2(293, 60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(282, 768), Vector2(282, 392)]
+}
+
+[sub_resource type="Animation" id="Animation_5sine"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(293, -130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(282, 392)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2l7r2"]
+_data = {
+"RESET": SubResource("Animation_5sine"),
+"default": SubResource("Animation_28r3m")
+}
+
+[node name="HighscoreUi" type="CanvasLayer"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="HighscoreManager" type="Node2D" parent="."]
+
+[node name="TopPanel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.0
+offset_top = -130.0
+offset_right = 247.0
+offset_bottom = -8.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4gw8v")
+
+[node name="GameOverLabel" type="Label" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -53.0
+offset_right = 195.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score!"
+label_settings = SubResource("LabelSettings_nkwik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomPanel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -328.0
+offset_right = 257.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_br2fn")
+
+[node name="NameInputLabel" type="Label" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_top = 16.0
+offset_right = 90.5
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Your name:"
+label_settings = SubResource("LabelSettings_x8cxe")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -136.0
+offset_right = 71.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="ScoreTitleLabel" type="Label" parent="BottomPanel/GridContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_x8cxe")
+
+[node name="ScoreLabel" type="Label" parent="BottomPanel/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "215"
+label_settings = SubResource("LabelSettings_x8cxe")
+horizontal_alignment = 2
+
+[node name="NameInput" type="TextEdit" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -72.0
+offset_right = 187.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Type your name here"
+caret_move_on_right_click = false
+
+[node name="ButtonRect" type="TextureRect" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -104.0
+offset_right = 96.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_6lq47")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="BottomPanel/ButtonRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -32.0
+offset_right = 87.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0862745, 0.109804, 0.180392, 1)
+theme_override_fonts/font = SubResource("SystemFont_kx3b6")
+theme_override_font_sizes/font_size = 18
+action_mode = 0
+text = "Save"
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2l7r2")
+}
+autoplay = "default"

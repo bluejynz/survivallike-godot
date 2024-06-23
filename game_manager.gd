@@ -2,6 +2,7 @@ extends Node
 
 signal gold_collected
 signal game_over
+signal highscore
 signal mob_killed
 signal level_up
 
