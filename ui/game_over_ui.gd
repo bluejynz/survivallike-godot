@@ -8,10 +8,12 @@ extends CanvasLayer
 @export var restart_delay: float = 10
 
 var restart_cooldown: float
+var is_highscore: bool
 
 func _ready():
 	time_label.text = GameManager.elapsed_time_text
 	monsters_label.text = str(GameManager.monsters_slayed)
+	
 	restart_cooldown = restart_delay
 
 func _process(delta: float) -> void:
