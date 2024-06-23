@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdis0hr668k3p"]
+[gd_scene load_steps=15 format=3 uid="uid://cdis0hr668k3p"]
 
 [ext_resource type="Texture2D" uid="uid://45xf5j5elop4" path="res://addons/Tiny Swords (Update 010)/UI/Ribbons/Ribbon_Yellow_3Slides.png" id="1_56bdd"]
 [ext_resource type="Texture2D" uid="uid://l8xbfikn3c22" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Banner_Horizontal.png" id="2_cfm33"]
 [ext_resource type="Texture2D" uid="uid://dn08woasdnx2v" path="res://addons/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_6lq47"]
+[ext_resource type="Script" path="res://systems/highscore/highscore_system.gd" id="4_g8edt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gw8v"]
 texture = ExtResource("1_56bdd")
@@ -199,6 +200,23 @@ text = "Your name:"
 label_settings = SubResource("LabelSettings_x8cxe")
 horizontal_alignment = 1
 
+[node name="NameInput" type="TextEdit" parent="BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -72.0
+offset_right = 187.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Type your name here"
+caret_move_on_right_click = false
+
 [node name="GridContainer" type="GridContainer" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 7
@@ -227,22 +245,6 @@ layout_mode = 2
 text = "215"
 label_settings = SubResource("LabelSettings_x8cxe")
 horizontal_alignment = 2
-
-[node name="NameInput" type="TextEdit" parent="BottomPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -72.0
-offset_right = 187.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "Type your name here"
-caret_move_on_right_click = false
 
 [node name="ButtonRect" type="TextureRect" parent="BottomPanel"]
 layout_mode = 1
@@ -285,3 +287,6 @@ libraries = {
 "": SubResource("AnimationLibrary_2l7r2")
 }
 autoplay = "default"
+
+[node name="HighscoreSystem" type="Node2D" parent="."]
+script = ExtResource("4_g8edt")
