@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://chs26awqrak4l" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_vs62s"]
 [ext_resource type="PackedScene" uid="uid://crkwf674sdxf2" path="res://misc/skull.tscn" id="2_updn1"]
 [ext_resource type="PackedScene" uid="uid://wqcq88uemdpm" path="res://ui/healt_bar.tscn" id="4_32as7"]
+[ext_resource type="AudioStream" uid="uid://8oi7lpouibm5" path="res://addons/sounds/sword-hit-metal.wav" id="4_h7e2j"]
 [ext_resource type="AudioStream" uid="uid://0le8te4apheu" path="res://addons/sounds/player-damage.wav" id="5_ymfco"]
-[ext_resource type="AudioStream" uid="uid://bmsydnmxr8ur8" path="res://addons/sounds/sword-swing.wav" id="6_cuw8u"]
 [ext_resource type="AudioStream" uid="uid://ow63nu4rk0gg" path="res://addons/sounds/game-over-arcade.wav" id="7_ip506"]
 
 [sub_resource type="Animation" id="Animation_4dggg"]
@@ -206,18 +206,33 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
 }
-tracks/1/type = "method"
+tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("SoundsNode/AttackAudio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_h7e2j")
+}],
+"times": PackedFloat32Array(0.166667)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [true],
-"method": &"deal_damage_to_enemies"
+"args": [],
+"method": &"deal_knockback_to_enemies"
 }]
 }
 
@@ -389,7 +404,6 @@ position = Vector2(0, -104.833)
 stream = ExtResource("5_ymfco")
 
 [node name="AttackAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
-stream = ExtResource("6_cuw8u")
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("7_ip506")

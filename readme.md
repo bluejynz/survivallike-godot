@@ -16,7 +16,7 @@ Final project for DIO + Santander's Bootcamp
 
 ## What I have so far
 
-- Character movement and 1 simple attack
+- Character movement, 1 simple attack, a block/knockback action
 - 1 automatic spell
 - Damage system
 - 2 different monsters and 1 pacific mob
@@ -32,10 +32,15 @@ Final project for DIO + Santander's Bootcamp
 
 ## Things I want to implement
 
-### UI
+### UI/UX
 
 - Add configs
+- Add shortcut for volume control (+/-)
 
 ### Gameplay
+- Add dash
+- Add block/evasion
+	- BUG: Normal attack canceling block attack
+	- Add interface for hability availability
 - Add more spells
 - Add more enemies
