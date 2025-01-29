@@ -387,9 +387,12 @@ position = Vector2(0, -104.833)
 
 [node name="DamageAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("5_ymfco")
+bus = &"SFX"
 
 [node name="AttackAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("6_cuw8u")
+bus = &"SFX"
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("7_ip506")
+bus = &"SFX"

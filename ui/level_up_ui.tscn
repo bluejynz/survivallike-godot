@@ -14,23 +14,23 @@ texture_margin_bottom = 32.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="SystemFont" id="SystemFont_3eke4"]
+[sub_resource type="SystemFont" id="SystemFont_c500r"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qvncc"]
-font = SubResource("SystemFont_3eke4")
+font = SubResource("SystemFont_c500r")
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="SystemFont" id="SystemFont_lj2sv"]
+[sub_resource type="SystemFont" id="SystemFont_qdcax"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1waje"]
-font = SubResource("SystemFont_lj2sv")
+font = SubResource("SystemFont_qdcax")
 font_size = 48
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -45,11 +45,11 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(4, 0, 56, 60)
 
-[sub_resource type="SystemFont" id="SystemFont_bdl7b"]
+[sub_resource type="SystemFont" id="SystemFont_eqab4"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ktjjm"]
-font = SubResource("SystemFont_bdl7b")
+font = SubResource("SystemFont_eqab4")
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
@@ -304,3 +304,4 @@ autoplay = "default"
 stream = ExtResource("4_segyu")
 volume_db = -10.0
 autoplay = true
+bus = &"SFX"

@@ -31,6 +31,7 @@ Final project for DIO + Santander's Bootcamp
 - Wipe (every 30s)
 
 ## Things I want to implement
+- Options menu
 
 ### UI
 
@@ -39,3 +40,6 @@ Final project for DIO + Santander's Bootcamp
 ### Gameplay
 - Add more spells
 - Add more enemies
+
+### Bugs to Fix
+- Mouse pointer is in wrong position

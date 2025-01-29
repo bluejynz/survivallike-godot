@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://4w0lrmemawo3"]
+[gd_scene load_steps=59 format=3 uid="uid://v4jge53mrjpk"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_k74wn"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_lbyke"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d3k4esd7xcau6" path="res://addons/Tiny Swords (Update 010)/Deco/10.png" id="7_c3yon"]
 [ext_resource type="Texture2D" uid="uid://cc4p1wolgrcr7" path="res://addons/Tiny Swords (Update 010)/Deco/16.png" id="7_d0eop"]
 [ext_resource type="Texture2D" uid="uid://66vk0ev7sgfh" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Idle.png" id="8_4fpu1"]
-[ext_resource type="PackedScene" uid="uid://d3i81lwlomwnt" path="res://misc/foam_tile.tscn" id="8_gtqs3"]
+[ext_resource type="PackedScene" path="res://misc/foam_tile.tscn" id="8_gtqs3"]
 [ext_resource type="Texture2D" uid="uid://dcmu5ajncil7y" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="9_tofw5"]
 [ext_resource type="Texture2D" uid="uid://bqbtvc351cuxx" path="res://addons/Tiny Swords (Update 010)/Deco/04.png" id="10_v7ebe"]
 [ext_resource type="Texture2D" uid="uid://chs26awqrak4l" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="13_ev7jf"]
@@ -369,11 +369,11 @@ _data = {
 "default": SubResource("Animation_6x74i")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_stjdx"]
+[sub_resource type="SystemFont" id="SystemFont_ua15w"]
 font_weight = 999
 
 [sub_resource type="LabelSettings" id="LabelSettings_rcw3u"]
-font = SubResource("SystemFont_stjdx")
+font = SubResource("SystemFont_ua15w")
 font_size = 64
 font_color = Color(0.0862745, 0.109804, 0.180392, 1)
 outline_size = 8
@@ -642,3 +642,4 @@ vertical_alignment = 1
 stream = ExtResource("15_cg3w6")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"

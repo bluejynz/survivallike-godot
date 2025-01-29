@@ -165,3 +165,4 @@ scale = Vector2(0.236, 0.208)
 
 [node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_v1nir")
+bus = &"SFX"

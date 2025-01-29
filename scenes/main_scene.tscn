@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://diwxy7d6gcnd7"]
+[gd_scene load_steps=30 format=3 uid="uid://diwxy7d6gcnd7"]
 
 [ext_resource type="PackedScene" uid="uid://bnptj5f8vcj3s" path="res://systems/mod_spawner.tscn" id="1_5i5c7"]
 [ext_resource type="Texture2D" uid="uid://b6p656i5mbfg" path="res://addons/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_gwd85"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bybqrou3pp4ep" path="res://ui/game_over_ui.tscn" id="2_0n6a7"]
 [ext_resource type="PackedScene" uid="uid://cc3abgevaik7x" path="res://player/player.tscn" id="2_mg7ye"]
 [ext_resource type="Texture2D" uid="uid://pgqvbap1rpej" path="res://addons/Tiny Swords (Update 010)/Deco/07.png" id="2_t0oem"]
-[ext_resource type="PackedScene" uid="uid://cdis0hr668k3p" path="res://ui/highscore_ui.tscn" id="3_itdfq"]
+[ext_resource type="PackedScene" path="res://ui/highscore_ui.tscn" id="3_itdfq"]
 [ext_resource type="PackedScene" uid="uid://fgb00tra0pdh" path="res://ui/game_ui.tscn" id="3_ydcnf"]
 [ext_resource type="Texture2D" uid="uid://du0i2cjf0du2q" path="res://addons/Tiny Swords (Update 010)/Deco/02.png" id="3_yywg3"]
 [ext_resource type="Texture2D" uid="uid://bxamb5rnxfytg" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="4_xkvfw"]
@@ -18,7 +18,8 @@
 [ext_resource type="Script" path="res://scenes/audio_stream_player.gd" id="13_fxw4l"]
 [ext_resource type="PackedScene" uid="uid://c36icesh2e6pk" path="res://ui/level_up_ui.tscn" id="14_ak4tt"]
 [ext_resource type="Script" path="res://systems/wipe_system.gd" id="15_xawvt"]
-[ext_resource type="PackedScene" uid="uid://d3i81lwlomwnt" path="res://misc/foam_tile.tscn" id="18_h3y44"]
+[ext_resource type="PackedScene" path="res://misc/foam_tile.tscn" id="18_h3y44"]
+[ext_resource type="PackedScene" uid="uid://dnnuq51istrdv" path="res://ui/options_menu.tscn" id="20_a33mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epcq5"]
 texture = ExtResource("1_gwd85")
@@ -106,6 +107,46 @@ game_over_ui_template = ExtResource("2_0n6a7")
 highscore_ui_template = ExtResource("3_itdfq")
 level_up_ui_template = ExtResource("14_ak4tt")
 
+[node name="GameUI" parent="." instance=ExtResource("3_ydcnf")]
+
+[node name="OptionsMenu" parent="." instance=ExtResource("20_a33mt")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("13_fxw4l")
+
+[node name="ModSpawner" parent="." instance=ExtResource("1_5i5c7")]
+position = Vector2(521, 376)
+scale = Vector2(1, 0.972973)
+
+[node name="DifficultySystem" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner")]
+script = ExtResource("10_7rtxp")
+mob_spawner = NodePath("../ModSpawner")
+
+[node name="WipeSystem" type="Node2D" parent="."]
+script = ExtResource("15_xawvt")
+
+[node name="Player" parent="." instance=ExtResource("2_mg7ye")]
+position = Vector2(521, 376)
+ritual_prefab = ExtResource("6_pjjix")
+
+[node name="RemoteTransform2D-Camera" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteTransform2D-Spawner" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../ModSpawner")
+update_rotation = false
+update_scale = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(521, 376)
+scale = Vector2(1, 0.972973)
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_4ev5r")
@@ -155,32 +196,6 @@ debug_color = Color(0.831373, 0.4, 0.109804, 0)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldLimit"]
 polygon = PackedVector2Array(-312, 56, -584, 56, -584, 120, -776, 120, -776, 184, -840, 184, -840, 248, -904, 248, -904, 456, -840, 456, -840, 520, -776, 520, -776, 584, -504, 584, -504, 520, -440, 520, -440, 392, -312, 392, -312, 328, -248, 328, -248, 120, -312, 120)
 
-[node name="Player" parent="." instance=ExtResource("2_mg7ye")]
-position = Vector2(521, 376)
-ritual_prefab = ExtResource("6_pjjix")
-
-[node name="RemoteTransform2D-Camera" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
-update_rotation = false
-update_scale = false
-
-[node name="RemoteTransform2D-Spawner" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../ModSpawner")
-update_rotation = false
-update_scale = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(521, 376)
-scale = Vector2(1, 0.972973)
-
-[node name="ModSpawner" parent="." instance=ExtResource("1_5i5c7")]
-position = Vector2(521, 376)
-scale = Vector2(1, 0.972973)
-
-[node name="DifficultySystem" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner")]
-script = ExtResource("10_7rtxp")
-mob_spawner = NodePath("../ModSpawner")
-
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -225,16 +240,6 @@ position = Vector2(-1186, -748)
 
 [node name="Tree14" parent="Trees" instance=ExtResource("5_dx70e")]
 position = Vector2(-1515, -898)
-
-[node name="GameUI" parent="." instance=ExtResource("3_ydcnf")]
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
-autoplay = true
-script = ExtResource("13_fxw4l")
-
-[node name="WipeSystem" type="Node2D" parent="."]
-script = ExtResource("15_xawvt")
 
 [node name="Foam" type="Node2D" parent="."]
 z_index = -3

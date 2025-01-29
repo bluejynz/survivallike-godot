@@ -5,4 +5,5 @@
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_gb2g1")
+bus = &"SFX"
 script = ExtResource("2_a3qfg")

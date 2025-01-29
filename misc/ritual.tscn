@@ -240,7 +240,9 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Magic3Audio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("7_hxdeb")
 pitch_scale = 0.65
+bus = &"SFX"
 
 [node name="Magic4Audio" type="AudioStreamPlayer2D" parent="SoundsNode"]
 stream = ExtResource("8_4styd")
 autoplay = true
+bus = &"SFX"

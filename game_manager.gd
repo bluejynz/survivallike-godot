@@ -8,6 +8,7 @@ signal level_up
 
 var is_os_mobile: bool
 @onready var joystick: VirtualJoystick = get_node("/root/MainScene/GameUI/VirtualJoystick")
+@onready var options_menu: CanvasLayer = get_node("/root/MainScene/OptionsMenu")
 
 var player: Player
 var player_position: Vector2
@@ -32,8 +33,12 @@ func _process(delta):
 	var seconds: int = elapsed_time_in_seconds % 60
 	var minutes: int = elapsed_time_in_seconds / 60
 	elapsed_time_text = "%02d:%02d" % [minutes, seconds]
+	
 	if Input.is_action_just_pressed("toggle_mute"):
 		toggle_mute()
+	
+	if Input.is_action_just_pressed("options_menu"):
+		toggle_options_menu()
 
 func toggle_mute():
 	is_game_muted = not is_game_muted
@@ -67,3 +72,7 @@ func config_mobile():
 
 func toggle_pause():
 	is_game_paused = not is_game_paused
+
+func toggle_options_menu():
+	toggle_pause()
+	options_menu.visible = not options_menu.visible
