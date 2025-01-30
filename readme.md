@@ -40,7 +40,7 @@ Final project for DIO + Santander's Bootcamp
 ### Gameplay
 - Add dash
 - Add block/evasion
-	- BUG: Normal attack canceling block attack
+	- [x] BUG: Normal attack canceling block attack
 	- Add interface for hability availability
 - Add more spells
 - Add more enemies

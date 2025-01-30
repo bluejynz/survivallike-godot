@@ -128,7 +128,7 @@ func rotate_sprite() -> void:
 		sprite.flip_h = true
 
 func attack() -> void:
-	if is_attacking: return
+	if is_attacking or is_blocking: return
 	animation_player.play("attack_side_1")
 	
 	is_attacking = true
@@ -138,6 +138,7 @@ func block() -> void:
 	if is_blocking or not is_block_available: return
 	animation_player.play("attack_side_2")
 	
+	is_attacking = false
 	is_blocking = true
 	is_block_available = false
 	block_cooldown = .6
