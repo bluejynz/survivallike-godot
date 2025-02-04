@@ -2,6 +2,7 @@ extends Node
 
 signal gold_collected
 signal game_over
+signal highscore
 signal mob_killed
 signal level_up
 
@@ -18,6 +19,7 @@ var monsters_slayed: int = 0
 
 var is_game_paused: bool = false
 var is_game_over: bool = false
+var is_game_muted: bool = false
 
 func _ready():
 	is_os_mobile = OS.get_model_name() != "GenericDevice"
@@ -30,6 +32,14 @@ func _process(delta):
 	var seconds: int = elapsed_time_in_seconds % 60
 	var minutes: int = elapsed_time_in_seconds / 60
 	elapsed_time_text = "%02d:%02d" % [minutes, seconds]
+	if Input.is_action_just_pressed("toggle_mute"):
+		toggle_mute()
+
+func toggle_mute():
+	is_game_muted = not is_game_muted
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), is_game_muted)
+	if OS.has_feature("persistant_storage"):
+		ProjectSettings.set_setting("application/game_is_muted", is_game_muted)
 
 func end_game():
 	if is_game_over: return

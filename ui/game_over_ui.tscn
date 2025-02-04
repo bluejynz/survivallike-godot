@@ -11,13 +11,13 @@ texture_margin_right = 64.0
 axis_stretch_horizontal = 2
 region_rect = Rect2(0, 0, 192, 64)
 
-[sub_resource type="SystemFont" id="SystemFont_rll4i"]
+[sub_resource type="SystemFont" id="SystemFont_jdjej"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_opiwt"]
-font = SubResource("SystemFont_rll4i")
+font = SubResource("SystemFont_jdjej")
 font_size = 52
 font_color = Color(0.0862745, 0.109804, 0.180392, 1)
 
@@ -31,13 +31,13 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(32, 48, 128, 128)
 
-[sub_resource type="SystemFont" id="SystemFont_w7pog"]
+[sub_resource type="SystemFont" id="SystemFont_w4dfs"]
 font_names = PackedStringArray("Consolas")
 font_weight = 999
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_igb40"]
-font = SubResource("SystemFont_w7pog")
+font = SubResource("SystemFont_w4dfs")
 font_size = 24
 font_color = Color(0.0862745, 0.109804, 0.180392, 1)
 

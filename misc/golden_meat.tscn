@@ -62,7 +62,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hf77"]
 
-[node name="GoldenMeat" type="AnimatedSprite2D"]
+[node name="GoldenMeat" type="AnimatedSprite2D" groups=["items"]]
 self_modulate = Color(1.4, 1.2, 0, 1)
 position = Vector2(0, -32)
 scale = Vector2(1.00216, 1)

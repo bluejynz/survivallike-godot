@@ -16,7 +16,7 @@ Final project for DIO + Santander's Bootcamp
 
 ## What I have so far
 
-- Character movement and 1 simple attack
+- Character movement, 1 simple attack, a block/knockback skill
 - 1 automatic spell
 - Damage system
 - 2 different monsters and 1 pacific mob
@@ -26,15 +26,21 @@ Final project for DIO + Santander's Bootcamp
 - Game over and automatic restart
 - Sound effects
 - Leveling/upgrade system
+- Main menu
+- New map
+- Wipe (every 30s)
 
 ## Things I want to implement
 
-### UI
+### UI/UX
 
-- Add a main menu
-	- Add fullscreen mode for desktop
+- Add configs
+- Add shortcut for volume control (+/-)
 
 ### Gameplay
+- Add dash
+- Add block/evasion
+	- [✓] BUG: Normal attack canceling block attack
+	- [✓] Add interface for hability availability
 - Add more spells
 - Add more enemies
-- Every now and then wipe animals that aren't on screen

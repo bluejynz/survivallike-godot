@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqgp05g6xlj8o"]
+
+[ext_resource type="Texture2D" uid="uid://churmh50ehhtd" path="res://addons/HealthBar/healthbar_bg.png" id="1_5r4cw"]
+[ext_resource type="Script" path="res://ui/xp_bar.gd" id="1_bo6p3"]
+[ext_resource type="Texture2D" uid="uid://hxdtmipet5ga" path="res://addons/HealthBar/healthbar.png" id="2_25o2v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igv1p"]
+texture = ExtResource("1_5r4cw")
+texture_margin_left = 40.0
+texture_margin_top = 16.0
+texture_margin_right = 40.0
+texture_margin_bottom = 20.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(12, 8, 168, 40)
+modulate_color = Color(1, 0.882054, 0.445368, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5u7ey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my02k"]
+bg_color = Color(1, 0.568627, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_veqqs"]
+texture = ExtResource("2_25o2v")
+texture_margin_left = 28.0
+texture_margin_top = 20.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(4, 0, 184, 60)
+modulate_color = Color(1, 0.882353, 0.447059, 1)
+
+[node name="XpBar" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.187481, 0.187481)
+script = ExtResource("1_bo6p3")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2668.0
+offset_top = -96.0
+offset_right = 2667.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_igv1p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -2672.0
+offset_top = -91.0
+offset_right = 2672.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_5u7ey")
+theme_override_styles/fill = SubResource("StyleBoxFlat_my02k")
+value = 61.83
+rounded = true
+show_percentage = false
+
+[node name="FrontPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2678.0
+offset_top = -101.0
+offset_right = 2677.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_veqqs")

@@ -12,6 +12,8 @@ const UpgradesEnum = preload("res://player/upgrades_enum.gd").UpgradesEnum
 var upgrades: Array[int]
 var filtered_upgrades: Array[int]
 
+var is_menu_loading: bool = true
+
 func _ready():
 	GameManager.toggle_pause()
 	upgrades = random_upgrades()
@@ -20,6 +22,15 @@ func _ready():
 func _process(delta):
 	if GameManager.is_game_over: dispose_menu()
 
+func menu_not_loading():
+	is_menu_loading = false
+
+func update_button_animation(panel: Panel, is_mouse_over: bool):
+	if is_mouse_over:
+		panel.modulate = Color.AQUAMARINE
+	else:
+		panel.modulate = Color.WHITE
+
 func random_upgrades() -> Array[int]:
 	filtered_upgrades = upgrades_without_caps()
 	
@@ -27,7 +38,6 @@ func random_upgrades() -> Array[int]:
 		var rng = randi() % (filtered_upgrades.size())
 		if not upgrades.has(filtered_upgrades[rng]):
 			upgrades.append(filtered_upgrades[rng])
-	#is_upgrades_caps()
 	
 	return upgrades
 
@@ -38,51 +48,23 @@ func upgrades_without_caps() -> Array[int]:
 			"MOVE_SPEED":
 				if not GameManager.player.is_move_speed_caps():
 					filtered_upgrades.append(i)
-				else: print("caps ", UpgradesEnum.find_key(i))
 			"SWORD_DAMAGE":
 				if not GameManager.player.is_sword_damage_caps():
 					filtered_upgrades.append(i)
-				else: print("caps ", UpgradesEnum.find_key(i))
 			"RITUAL_DAMAGE":
 				if not GameManager.player.is_ritual_damage_caps():
 					filtered_upgrades.append(i)
-				else: print("caps ", UpgradesEnum.find_key(i))
 			"RITUAL_INTERVAL":
 				if not GameManager.player.is_ritual_interval_caps():
 					filtered_upgrades.append(i)
-				else: print("caps ", UpgradesEnum.find_key(i))
 			"MAX_HEALTH":
 				filtered_upgrades.append(i)
 			"KNOCKBACK_STRENGTH":
 				if not GameManager.player.is_knockback_strength_caps():
 					filtered_upgrades.append(i)
-				else: print("caps ", UpgradesEnum.find_key(i))
 			"DEFAULT":
 				filtered_upgrades.append(i)
 	return filtered_upgrades
-
-func is_upgrades_caps():
-	for index in range(3):
-		match UpgradesEnum.find_key(upgrades[index]):
-			"MOVE_SPEED":
-				if GameManager.player.is_move_speed_caps():
-					upgrades[index] = UpgradesEnum.size() - 1
-			"SWORD_DAMAGE":
-				if GameManager.player.is_sword_damage_caps():
-					upgrades[index] = UpgradesEnum.size() - 1
-			"RITUAL_DAMAGE":
-				if GameManager.player.is_ritual_damage_caps():
-					upgrades[index] = UpgradesEnum.size() - 1
-			"RITUAL_INTERVAL":
-				if GameManager.player.is_ritual_interval_caps():
-					upgrades[index] = UpgradesEnum.size() - 1
-			"MAX_HEALTH":
-				pass
-			"KNOCKBACK_STRENGTH":
-				if GameManager.player.is_knockback_strength_caps():
-					upgrades[index] = UpgradesEnum.size() - 1
-			"DEFAULT":
-				pass
 
 func update_label_text(index: int, label: Label):
 	match UpgradesEnum.find_key(index):
@@ -131,12 +113,23 @@ func update_labels():
 				update_label_text(upgrades[2], label)
  
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.pressed:
-			for panel in panels:
-				var rect = Rect2(panel.get_global_rect().position, panel.size)
-				if rect.has_point(event.global_position):
+	if is_menu_loading: return
+	for panel in panels:
+		if event is InputEventMouseButton:
+			if event.button_index == 1 and event.pressed:
+				if is_mouse_position_over_object(event, panel):
 					select_option(panel)
+		if event is InputEventMouseMotion:
+			if is_mouse_position_over_object(event, panel):
+				update_button_animation(panel, true)
+			else:
+				update_button_animation(panel, false)
+
+func is_mouse_position_over_object(mouse, object) -> bool:
+	var rect = Rect2(object.get_global_rect().position, object.size)
+	if rect.has_point(mouse.global_position):
+		return true
+	return false
 
 func select_option(panel: Panel):
 	var option_chosen: bool = false
