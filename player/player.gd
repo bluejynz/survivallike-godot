@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var health_bar: ProgressBar = $HealtBar/ProgressBar
+@onready var block_cd_rect: TextureRect = $/root/MainScene/GameUI/BlockCD
 @onready var damage_digit_marker = $DamageDigitMarker
 
 @onready var damage_sound: AudioStreamPlayer2D = $SoundsNode/DamageAudio
@@ -136,6 +137,7 @@ func attack() -> void:
 
 func block() -> void:
 	if is_blocking or not is_block_available: return
+	start_block_tween()
 	animation_player.play("attack_side_2")
 	
 	is_attacking = false
@@ -143,6 +145,12 @@ func block() -> void:
 	is_block_available = false
 	block_cooldown = .6
 	block_speed_cooldown = block_speed
+
+func start_block_tween() -> void:
+	var original_color: Color = block_cd_rect.modulate
+	block_cd_rect.modulate = Color.RED
+	var tween = create_tween()
+	tween.tween_property(block_cd_rect, "modulate", original_color, block_speed).set_ease(Tween.EASE_IN_OUT)
 
 func deal_damage_to_enemies(knockback: bool) -> void:
 	var bodies = sword_area.get_overlapping_bodies()

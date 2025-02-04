@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fgb00tra0pdh"]
+[gd_scene load_steps=14 format=3 uid="uid://fgb00tra0pdh"]
 
 [ext_resource type="Script" path="res://ui/game_ui.gd" id="1_i6dvi"]
 [ext_resource type="Texture2D" uid="uid://l8xbfikn3c22" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Banner_Horizontal.png" id="2_yyxpn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_vu3uj"]
 [ext_resource type="PackedScene" uid="uid://cqgp05g6xlj8o" path="res://ui/xp_bar.tscn" id="5_ksn06"]
 [ext_resource type="Texture2D" uid="uid://bbd6kmmu2clvo" path="res://addons/Tiny Swords (Update 010)/Deco/03.png" id="6_ukjbv"]
+[ext_resource type="Texture2D" uid="uid://d1mprdlut68qd" path="res://addons/Kenney's ui pack/cursorSword_silver.png" id="7_eywum"]
 
 [sub_resource type="SystemFont" id="SystemFont_8e83s"]
 font_names = PackedStringArray("Consolas")
@@ -130,3 +131,21 @@ offset_right = 86.0
 offset_bottom = 67.0
 scale = Vector2(1.01788, 1)
 texture = ExtResource("6_ukjbv")
+
+[node name="BlockCD" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -107.0
+offset_right = -12.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.785398
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("7_eywum")

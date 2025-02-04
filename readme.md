@@ -16,7 +16,7 @@ Final project for DIO + Santander's Bootcamp
 
 ## What I have so far
 
-- Character movement, 1 simple attack, a block/knockback action
+- Character movement, 1 simple attack, a block/knockback skill
 - 1 automatic spell
 - Damage system
 - 2 different monsters and 1 pacific mob
@@ -40,7 +40,7 @@ Final project for DIO + Santander's Bootcamp
 ### Gameplay
 - Add dash
 - Add block/evasion
-	- [x] BUG: Normal attack canceling block attack
-	- Add interface for hability availability
+	- [✓] BUG: Normal attack canceling block attack
+	- [✓] Add interface for hability availability
 - Add more spells
 - Add more enemies
